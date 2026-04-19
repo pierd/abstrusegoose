@@ -33,13 +33,24 @@ function App() {
       <footer>
         <nav>
           <a href="/">HOME</a>
-          {"         "}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a href="/archive">ARCHIVE</a>
-          {"         "}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a href="/feedthegoose">FEED THE GOOSE</a>
-          {"         "}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a href="/store">STORE</a>
         </nav>
+
+        <div id="melikes">
+        <p><b>melikes</b></p>
+        <a href="http://brownsharpie.courtneygibbons.org">Brown Sharpie</a>&nbsp;&nbsp;
+        <a href="http://www.explosm.net/comics/new">Cy&H</a>&nbsp;&nbsp;
+        <a href="http://www.exocomics.com">EXTRAORDINARY</a>&nbsp;&nbsp;
+        <a href="http://pbfcomics.com">PBF</a>&nbsp;&nbsp;
+        <a href="http://popstrip.com">popstrip</a>&nbsp;&nbsp;
+        <a href="http://spikedmath.com">spiked math</a>&nbsp;&nbsp;
+        <a href="http://www.xkcd.com">xkcd</a>
+        </div>
 
         <div className="creativecommons">
           <a
@@ -74,9 +85,9 @@ function App() {
         <div className="privacy">
           <p>
             <a href="/about">about</a>
-            {"      "}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="/faq">faq</a>
-            {"      "}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="/privacy">privacy</a>
           </p>
         </div>
