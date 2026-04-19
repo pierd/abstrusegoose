@@ -3,225 +3,53 @@ import sys
 
 PAGE_PATTERN = re.compile(r'''<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="Description" content="Strip cartoon about math, science, and geek culture." />
-    <title>(?P<title>Abstruse Goose [|\w\s]+)</title>
-    <link rel="stylesheet" href="styles/main.css" />
-    <link rel="alternate" type="application/rss\+xml" title="RSS 2.0" href="feed.xml" />
-    <link rel="alternate" type="application/atom\+xml" title="Atom 1.0" href="atomfeed.xml" />
-    <link rel="shortcut icon" href="images/favicon.ico" />
-
-    <script>
-      document.createElement\(footer\);
-      document.createElement\(header\);
-      document.createElement\(nav\);
-      document.createElement\(section\);
-    </script>
-  </head>
+  <head>.*?</head>
 <body>
 
-  <header>
-  <table>
-    <tr>
-      <td>
-        <a href="http://abstrusegoose.com/"><img src="http://abstrusegoose.com/images/AGlogo.PNG"></a>
-      </td>
-      <td>
-        <script type="text/javascript"><!--
-        google_ad_client = "ca-pub-0580318607844761";
-        /* 468x60, created 6/26/08 */
-        google_ad_slot = "7038958302";
-        google_ad_width = 468;
-        google_ad_height = 60;
-        //-->
-        </script>
-        <script type="text/javascript"
-        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-        </script>
-      </td>
-    </tr>
-  </table>
-
-  <div id="menu_top"></div>
-
-  </header>
+  <header>.*?</header>
   <section>
-  <p><a href="http://abstrusegoose.com/\d+">&laquo;&laquo; First</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://abstrusegoose.com/(?P<previous_id>\d+)">&laquo; Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;<a href="http://abstrusegoose.com/pseudorandom.php" >Random</a>&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;<a href="http://abstrusegoose.com/(?P<next_num>\d+)">Next &raquo;<a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://abstrusegoose.com/">Current &raquo;&raquo;</a></p>  <h1 class="storytitle"><a href="http://abstrusegoose.com/(?P<current_id>)">(?P<header>[^<]+)</a></h1><br>
-  <img src="(?P<image_url>[^"]+)" alt="(?P<image_alt>[^+]*)" width="(?P<image_width>\d+)" height="(?P<image_height>\d+)" />  <div id="blog_text"></div>
-  <p><a href="http://abstrusegoose.com/\d+">&laquo;&laquo; First</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://abstrusegoose.com/\d+">&laquo; Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;<a href="http://abstrusegoose.com/pseudorandom.php" >Random</a>&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;<a href="http://abstrusegoose.com/\d+">Next &raquo;<a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://abstrusegoose.com/">Current &raquo;&raquo;</a></p>  </section>
-  <footer>
-    <nav>
-      <a href="http://abstrusegoose.com">HOME</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="http://abstrusegoose.com/archive">ARCHIVE</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="http://abstrusegoose.com/feedthegoose">FEED THE GOOSE</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="http://www.cafepress.com/abstrusegoose">STORE</a>
-    </nav>
-
-   <script type="text/javascript"><!--
-     google_ad_client = "ca-pub-0580318607844761";
-    /* 728x90, created 6/26/08 */
-    google_ad_slot = "7299138344";
-    google_ad_width = 728;
-    google_ad_height = 90;
-    //-->
-    </script>
-    <script type="text/javascript"
-    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-    </script>
-
-    <div id="melikes">
-    <p><b>melikes</b></p>
-    <a href="http://brownsharpie.courtneygibbons.org">Brown Sharpie</a>&nbsp;&nbsp;
-    <a href="http://www.explosm.net/comics/new">Cy&H</a>&nbsp;&nbsp;
-    <a href="http://www.exocomics.com">EXTRAORDINARY</a>&nbsp;&nbsp;
-    <a href="http://pbfcomics.com">PBF</a>&nbsp;&nbsp;
-    <a href="http://popstrip.com">popstrip</a>&nbsp;&nbsp;
-    <a href="http://spikedmath.com">spiked math</a>&nbsp;&nbsp;
-    <a href="http://www.xkcd.com">xkcd</a>
-    </div>
-
-    <div class="creativecommons">
-
-    <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://creativecommons.org/images/public/somerights20.png"/></a>&nbsp;<img src="images/designation.PNG">
-
-    <br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/us/">Creative Commons Attribution-Noncommercial 3.0 United States License</a>.
-
-    </div>
-
-    <div class="credit">
-    <p><br />A webcomic......... that is all.</p>
-    </div>
-
-    <div class="privacy">
-    <p><a href="http://abstrusegoose.com/about">about</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="http://abstrusegoose.com/faq">faq</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="http://abstrusegoose.com/privacy">privacy</a></p>
-    </div>
-
-  </footer>
-</body>
-</html>
-<!-- cached with Cache Goose -->''', re.MULTILINE | re.DOTALL)
-
-PAGE_PATTERN = re.compile(r'''<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="Description" content="Strip cartoon about math, science, and geek culture." />
-    <title>(?P<title>Abstruse Goose [^<]+)</title>
-    <link rel="stylesheet" href="styles/main.css" />
-    <link rel="alternate" type="application/rss\+xml" title="RSS 2.0" href="feed.xml" />
-    <link rel="alternate" type="application/atom\+xml" title="Atom 1.0" href="atomfeed.xml" />
-    <link rel="shortcut icon" href="images/favicon.ico" />
-
-    <script>
-      document.createElement\(footer\);
-      document.createElement\(header\);
-      document.createElement\(nav\);
-      document.createElement\(section\);
-    </script>
-  </head>
-<body>
-
-  <header>
-  <table>
-    <tr>
-      <td>
-        <a href="http://abstrusegoose.com/"><img src="http://abstrusegoose.com/images/AGlogo.PNG"></a>
-      </td>
-      <td>
-        <script type="text/javascript"><!--
-        google_ad_client = "ca-pub-\d+";
-        /\* ([^*]*) \*/
-        google_ad_slot = "\d+";
-        google_ad_width = 468;
-        google_ad_height = 60;
-        //-->
-        </script>
-        <script type="text/javascript"
-        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-        </script>
-      </td>
-    </tr>
-  </table>
-
-  <div id="menu_top"></div>
-
-  </header>
-  <section>
-  <p>(<a href="http://abstrusegoose.com/\d+">)?&laquo;&laquo; First(</a>)?&nbsp;&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/(?P<previous_id>\d+)">)?&laquo; Previous(</a>)?&nbsp;&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;<a href="http://abstrusegoose.com/pseudorandom.php" >Random</a>&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/(?P<next_num>\d+)">)?Next &raquo;(<a>)?&nbsp;&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/">)?Current &raquo;&raquo;(</a>)?</p>  <h1 class="storytitle"><a href="http://abstrusegoose.com/(?P<current_id>\d+)">(?P<header>[^<]+)</a></h1><br>
-  (<a href="(?P<image_anchor>[^"]+)"(\s+target="_blank")?\s*>)?<img( class="(?P<image_classes>[^"]+)")?(\s+title="(?P<image_title>[^"]*)")?\s+src="(?P<image_url>[^"]+)"(\s+alt="(?P<image_alt>[^+]*)")?(\s+title="(?P<image_title2>[^"]+)")?\s+width="(?P<image_width>\d+)" height="(?P<image_height>\d+)"(\s*title="(?P<image_title3>[^"]*)")? */?>(</a>)?\s*(<br />\s*)*\s*<div id="blog_text">(?P<blog_text>.*?)</div>
-  <p>(<a href="http://abstrusegoose.com/\d+">)?&laquo;&laquo; First(</a>)?&nbsp;&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/\d+">)?&laquo; Previous(</a>)?&nbsp;&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;<a href="http://abstrusegoose.com/pseudorandom.php" >Random</a>&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/\d+">)?Next &raquo;(<a>)?&nbsp;&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/">)?Current &raquo;&raquo;(</a>)?</p>  </section>
-  <footer>
-    <nav>
-      <a href="http://abstrusegoose.com">HOME</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="http://abstrusegoose.com/archive">ARCHIVE</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="http://abstrusegoose.com/feedthegoose">FEED THE GOOSE</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="http://www.cafepress.com/abstrusegoose">STORE</a>
-    </nav>
-
-   <script type="text/javascript"><!--
-     google_ad_client = "ca-pub-\d+";
-    /\* ([^*]*) \*/
-    google_ad_slot = "\d+";
-    google_ad_width = 728;
-    google_ad_height = 90;
-    //-->
-    </script>
-    <script type="text/javascript"
-    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-    </script>
-
-    <div id="melikes">
-    <p><b>melikes</b></p>
-    <a href="http://brownsharpie.courtneygibbons.org">Brown Sharpie</a>&nbsp;&nbsp;
-    <a href="http://www.explosm.net/comics/new">Cy&H</a>&nbsp;&nbsp;
-    <a href="http://www.exocomics.com">EXTRAORDINARY</a>&nbsp;&nbsp;
-    <a href="http://pbfcomics.com">PBF</a>&nbsp;&nbsp;
-    <a href="http://popstrip.com">popstrip</a>&nbsp;&nbsp;
-    <a href="http://spikedmath.com">spiked math</a>&nbsp;&nbsp;
-    <a href="http://www.xkcd.com">xkcd</a>
-    </div>
-
-    <div class="creativecommons">
-
-    <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://creativecommons.org/images/public/somerights20.png"/></a>&nbsp;<img src="images/designation.PNG">
-
-    <br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/us/">Creative Commons Attribution-Noncommercial 3.0 United States License</a>.
-
-    </div>
-
-    <div class="credit">
-    <p><br />A webcomic......... that is all.</p>
-    </div>
-
-    <div class="privacy">
-    <p><a href="http://abstrusegoose.com/about">about</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="http://abstrusegoose.com/faq">faq</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="http://abstrusegoose.com/privacy">privacy</a></p>
-    </div>
-
-  </footer>
+  (<p>(<a href="http://abstrusegoose.com/\d+">)?&laquo;&laquo; First(</a>)?&nbsp;&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/(?P<previous_id>\d+)">)?&laquo; Previous(</a>)?&nbsp;&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;<a href="http://abstrusegoose.com/pseudorandom.php" >Random</a>&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/(?P<next_id>\d+)">)?Next &raquo;(<a>)?&nbsp;&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/">)?Current &raquo;&raquo;(</a>)?</p>\s*)?<h1 class="storytitle"><a href="http://abstrusegoose.com/(?P<current_id>[^"]+)">(<div align="left">)?(?P<header>[^<]*)(</div>)?</a></h1><br>
+  ((<a href="(?P<image_anchor>[^"]+)"(\s+target="_blank")?\s*>)?<img( class="(?P<image_classes>[^"]+)")?(\s+title="(?P<image_title>[^"]*)")?\s+src="(?P<image_url>[^"]+)"(\s+alt="(?P<image_alt>[^+]*)")?(\s+title="(?P<image_title2>[^"]+)")?\s+width="(?P<image_width>\d+)" height="(?P<image_height>\d+)"(\s*title="(?P<image_title3>[^"]*)")? */?>(</a>)?)?\s*(<br />\s*)*\s*<div id="blog_text">(?P<blog_text>.*?)</div>
+  (<p>(<a href="http://abstrusegoose.com/\d+">)?&laquo;&laquo; First(</a>)?&nbsp;&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/\d+">)?&laquo; Previous(</a>)?&nbsp;&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;<a href="http://abstrusegoose.com/pseudorandom.php" >Random</a>&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/\d+">)?Next &raquo;(<a>)?&nbsp;&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/">)?Current &raquo;&raquo;(</a>)?</p>\s*)?</section>
+  <footer>.*?</footer>
 </body>
 </html>
 <!-- cached with Cache Goose -->''', re.MULTILINE | re.DOTALL)
 
 if __name__ == '__main__':
+    pages = {}
     for path in sys.argv[1:]:
         try:
+            page_id = '/'.join(path.split('/')[2:]).split('.')[0]
             with open(path) as f:
                 matches = PAGE_PATTERN.match(f.read())
                 if matches is None:
                     print(path, "match failed!")
                     break
-                print(path, matches.groupdict().keys())
+                page_data = dict(matches.groupdict())
+                # print(path, page_data)
+                pages[page_id] = dict(
+                    image_title=page_data['image_title'] or page_data['image_title2'] or page_data['image_title3'],
+                    image_url=page_data['image_url'],   # FIXME
+                    image_anchor=page_data['image_anchor'], # FIXME
+                    image_alt=page_data['image_alt'],
+                    image_width=page_data['image_width'],
+                    image_height=page_data['image_height'],
+                    previous_id=int(page_data['previous_id']) if page_data['previous_id'] is not None else None,
+                    next_id=int(page_data['next_id']) if page_data['next_id'] is not None else None,
+                    blog_text=page_data['blog_text'],   # FIXME
+                )
         except IOError as e:
             if hasattr(e, "errno") and e.errno == 2:
-                print(path, "not found")
+                # print(path, "not found")
+                pass
             else:
                 print(path, e)
                 break
         except Exception as e:
             print(path, e)
             break
+    print(pages)
+    # for pid, page in pages.items():
+    #     if page['blog_text']:
+    #         print(pid, page['blog_text'])
