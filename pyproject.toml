@@ -1,0 +1,8 @@
+[project]
+name = "abstrusegoose-wayback"
+version = "0.1.0"
+description = "Resumable Wayback mirror downloader for abstrusegoose.com"
+requires-python = ">=3.10"
+dependencies = [
+    "wayback>=0.4.5",
+]
