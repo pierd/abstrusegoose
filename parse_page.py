@@ -1,3 +1,5 @@
+import html
+import json
 import re
 import sys
 
@@ -16,6 +18,30 @@ PAGE_PATTERN = re.compile(r'''<!DOCTYPE html>
 </html>
 <!-- cached with Cache Goose -->''', re.MULTILINE | re.DOTALL)
 
+def unescape(text):
+    if text is None:
+        return text
+    return html.unescape(text)
+
+def fix_url(url):
+    if url is None:
+        return url
+    if url.startswith('http://'):
+        url = 'https://' + url[len('http://'):]
+    if url.startswith('https://abstrusegoose.com'):
+        return url[len('https://abstrusegoose.com'):]
+    return url
+
+URL_ATTR_PATTERN = re.compile(r'''(\b(?:href|src)\s*=\s*)(["'])(.*?)\2''')
+
+def fix_html(text):
+    if text is None:
+        return text
+    def replace(match):
+        prefix, quote, url = match.group(1), match.group(2), match.group(3)
+        return f'{prefix}{quote}{fix_url(url)}{quote}'
+    return URL_ATTR_PATTERN.sub(replace, unescape(text))
+
 if __name__ == '__main__':
     pages = {}
     for path in sys.argv[1:]:
@@ -28,16 +54,18 @@ if __name__ == '__main__':
                     break
                 page_data = dict(matches.groupdict())
                 # print(path, page_data)
+                image_title = page_data['image_title'] or page_data['image_title2'] or page_data['image_title3']
                 pages[page_id] = dict(
-                    image_title=page_data['image_title'] or page_data['image_title2'] or page_data['image_title3'],
-                    image_url=page_data['image_url'],   # FIXME
-                    image_anchor=page_data['image_anchor'], # FIXME
-                    image_alt=page_data['image_alt'],
+                    title=unescape(page_data['header']),
+                    image_title=unescape(image_title),
+                    image_url=fix_url(page_data['image_url']),
+                    image_anchor=fix_url(page_data['image_anchor']),
+                    image_alt=unescape(page_data['image_alt']),
                     image_width=page_data['image_width'],
                     image_height=page_data['image_height'],
                     previous_id=int(page_data['previous_id']) if page_data['previous_id'] is not None else None,
                     next_id=int(page_data['next_id']) if page_data['next_id'] is not None else None,
-                    blog_text=page_data['blog_text'],   # FIXME
+                    blog_text=fix_html(page_data['blog_text']),
                 )
         except IOError as e:
             if hasattr(e, "errno") and e.errno == 2:
@@ -49,7 +77,7 @@ if __name__ == '__main__':
         except Exception as e:
             print(path, e)
             break
-    print(pages)
+    print(json.dumps(pages, indent=2))
     # for pid, page in pages.items():
     #     if page['blog_text']:
     #         print(pid, page['blog_text'])

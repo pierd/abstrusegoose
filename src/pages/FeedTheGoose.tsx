@@ -3,7 +3,7 @@ function FeedTheGoose() {
     <div id="pages_container">
       <img src="/images/feed_the_goose.png" alt="feed_the_goose" />
 
-      <table className="donate" style={{ width: "59%" }} align="center">
+      {/* <table className="donate" style={{ width: "59%" }} align="center">
         <tbody>
           <tr>
             <td>
@@ -36,7 +36,7 @@ function FeedTheGoose() {
             <td></td>
           </tr>
         </tbody>
-      </table>
+      </table> */}
     </div>
   );
 }
