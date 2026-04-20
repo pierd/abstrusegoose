@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts"],"version":"6.0.3"}
+{"root":["./src/layout.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/pages/about.tsx","./src/pages/archive.tsx","./src/pages/comicstrip.tsx","./src/pages/faq.tsx","./src/pages/feedthegoose.tsx","./src/pages/home.tsx"],"version":"6.0.3"}

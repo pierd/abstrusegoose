@@ -1,4 +1,6 @@
-function App() {
+import { Link, Outlet } from "react-router-dom";
+
+function Layout() {
   return (
     <>
       <header>
@@ -6,9 +8,9 @@ function App() {
           <tbody>
             <tr>
               <td>
-                <a href="/">
+                <Link to="/">
                   <img src="/images/AGlogo.PNG" alt="Abstruse Goose" />
-                </a>
+                </Link>
               </td>
               <td></td>
             </tr>
@@ -19,37 +21,32 @@ function App() {
       </header>
 
       <section>
-        <div id="pages_container">
-          <h1 className="storytitle">
-            <a href="/about">about</a>
-          </h1>
-          <p>
-            The Abstruse Goose comic is a subsidiary of the powerful and evil
-            Abstruse Goose Corporation.
-          </p>
-        </div>
+        <Outlet />
       </section>
 
       <footer>
         <nav>
-          <a href="/">HOME</a>
+          <Link to="/">HOME</Link>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="/archive">ARCHIVE</a>
+          <Link to="/archive">ARCHIVE</Link>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="/feedthegoose">FEED THE GOOSE</a>
+          <Link to="/feedthegoose">FEED THE GOOSE</Link>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a href="/store">STORE</a>
         </nav>
 
         <div id="melikes">
-        <p><b>melikes</b></p>
-        <a href="http://brownsharpie.courtneygibbons.org">Brown Sharpie</a>&nbsp;&nbsp;
-        <a href="http://www.explosm.net/comics/new">Cy&H</a>&nbsp;&nbsp;
-        <a href="http://www.exocomics.com">EXTRAORDINARY</a>&nbsp;&nbsp;
-        <a href="http://pbfcomics.com">PBF</a>&nbsp;&nbsp;
-        <a href="http://popstrip.com">popstrip</a>&nbsp;&nbsp;
-        <a href="http://spikedmath.com">spiked math</a>&nbsp;&nbsp;
-        <a href="http://www.xkcd.com">xkcd</a>
+          <p>
+            <b>melikes</b>
+          </p>
+          <a href="http://brownsharpie.courtneygibbons.org">Brown Sharpie</a>
+          &nbsp;&nbsp;
+          <a href="http://www.explosm.net/comics/new">Cy&H</a>&nbsp;&nbsp;
+          <a href="http://www.exocomics.com">EXTRAORDINARY</a>&nbsp;&nbsp;
+          <a href="http://pbfcomics.com">PBF</a>&nbsp;&nbsp;
+          <a href="http://popstrip.com">popstrip</a>&nbsp;&nbsp;
+          <a href="http://spikedmath.com">spiked math</a>&nbsp;&nbsp;
+          <a href="http://www.xkcd.com">xkcd</a>
         </div>
 
         <div className="creativecommons">
@@ -84,9 +81,9 @@ function App() {
 
         <div className="privacy">
           <p>
-            <a href="/about">about</a>
+            <Link to="/about">about</Link>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="/faq">faq</a>
+            <Link to="/faq">faq</Link>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="/privacy">privacy</a>
           </p>
@@ -96,4 +93,4 @@ function App() {
   );
 }
 
-export default App;
+export default Layout;
