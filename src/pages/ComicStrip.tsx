@@ -53,11 +53,14 @@ function ComicStrip() {
   if (!strip) {
     return (
       <div id="pages_container">
+        <title>Abstruse Goose | Not found</title>
         <h1 className="storytitle">Not found</h1>
         <p>No strip with id {id}.</p>
       </div>
     );
   }
+
+  const stripTitle = strip.title ?? strip.image_alt ?? id;
 
   const image = strip.image_url ? (
     <img
@@ -71,9 +74,10 @@ function ComicStrip() {
 
   return (
     <div id="pages_container">
+      <title>Abstruse Goose | {stripTitle}</title>
       <Navigation strip={strip} />
       <h1 className="storytitle">
-        <Link to={`/${id}`}>{strip.title ?? strip.image_alt ?? id}</Link>
+        <Link to={`/${id}`}>{stripTitle}</Link>
       </h1>
       <br />
       {strip.image_anchor ? (

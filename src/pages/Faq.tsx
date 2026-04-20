@@ -1,6 +1,7 @@
 function Faq() {
   return (
     <div id="pages_container">
+      <title>Abstruse Goose | FAQ</title>
       <h1 className="storytitle">
         <a href="">Frequently Asked Questions</a>
       </h1>

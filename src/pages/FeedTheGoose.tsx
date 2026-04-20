@@ -1,6 +1,7 @@
 function FeedTheGoose() {
   return (
     <div id="pages_container">
+      <title>Abstruse Goose | Feed the Goose</title>
       <img src="/images/feed_the_goose.png" alt="feed_the_goose" />
 
       {/* <table className="donate" style={{ width: "59%" }} align="center">

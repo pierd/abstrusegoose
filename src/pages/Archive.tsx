@@ -4,6 +4,7 @@ import { numericStripIds, strips } from "../strips";
 function Archive() {
   return (
     <div id="pages_container">
+      <title>Abstruse Goose | ARCHIVE</title>
       <h1 className="storytitle">
         <Link to="/archive">ARCHIVE</Link>
       </h1>

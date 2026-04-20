@@ -1,6 +1,7 @@
 function AboutThisMirror() {
   return (
     <div id="pages_container">
+      <title>Abstruse Goose | about this mirror</title>
       <h1 className="storytitle">
         <a href="">about this mirror</a>
       </h1>
