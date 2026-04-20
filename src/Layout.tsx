@@ -85,7 +85,7 @@ function Layout() {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Link to="/faq">faq</Link>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="/about-this-mirror">about this mirror</a>
+            <Link to="/about-this-mirror">about this mirror</Link>
           </p>
         </div>
       </footer>
