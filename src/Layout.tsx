@@ -32,7 +32,7 @@ function Layout() {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <Link to="/feedthegoose">FEED THE GOOSE</Link>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="/store">STORE</a>
+          <a href="https://github.com/pierd/abstrusegoose/issues/new" target="_blank">REPORT AN ISSUE</a>
         </nav>
 
         <div id="melikes">
@@ -85,7 +85,7 @@ function Layout() {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Link to="/faq">faq</Link>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="/privacy">privacy</a>
+            <a href="/about-this-mirror">about this mirror</a>
           </p>
         </div>
       </footer>

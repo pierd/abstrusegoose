@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Layout from './Layout.tsx'
 import Home from './pages/Home.tsx'
 import About from './pages/About.tsx'
+import AboutThisMirror from './pages/AboutThisMirror.tsx'
 import Faq from './pages/Faq.tsx'
 import Archive from './pages/Archive.tsx'
 import FeedTheGoose from './pages/FeedTheGoose.tsx'
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
+          <Route path="about-this-mirror" element={<AboutThisMirror />} />
           <Route path="faq" element={<Faq />} />
           <Route path="archive" element={<Archive />} />
           <Route path="feedthegoose" element={<FeedTheGoose />} />
