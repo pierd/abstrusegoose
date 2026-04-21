@@ -177,7 +177,7 @@
     "image_height": "267",
     "previous_id": 15,
     "next_id": 17,
-    "blog_text": "original: <a href=\"https://xkcd.com/139/\">http://xkcd.com/139/</a>"
+    "blog_text": "original: <a href=\"https://xkcd.com/139/\">https://xkcd.com/139/</a>"
   },
   "17": {
     "title": "The Birth of ENIAC",
@@ -1173,7 +1173,7 @@
     "image_height": "567",
     "previous_id": 116,
     "next_id": 118,
-    "blog_text": "<p><strong>HAPPY VALENTINE'S DAY!</strong></p>\n<br />\n<object width=\"425\" height=\"344\"><param name=\"movie\" value=\"http://www.youtube.com/v/UTby_e4-Rhg&hl=en&fs=1\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"https://www.youtube.com/v/UTby_e4-Rhg&hl=en&fs=1\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"425\" height=\"344\"></embed></object>"
+    "blog_text": "<p><strong>HAPPY VALENTINE'S DAY!</strong></p>\n<br />\n<object width=\"425\" height=\"344\"><param name=\"movie\" value=\"https://www.youtube.com/v/UTby_e4-Rhg&hl=en&fs=1\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"https://www.youtube.com/v/UTby_e4-Rhg&hl=en&fs=1\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"425\" height=\"344\"></embed></object>"
   },
   "118": {
     "title": "Dear Higgs Boson",
@@ -1701,7 +1701,7 @@
     "image_height": "1565",
     "previous_id": 165,
     "next_id": 167,
-    "blog_text": "<br /><br />\n\n<object width=\"425\" height=\"344\"><param name=\"movie\" value=\"http://www.youtube.com/v/PPWSUy75pIo&hl=en&fs=1&\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"https://www.youtube.com/v/PPWSUy75pIo&hl=en&fs=1&\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"425\" height=\"344\"></embed></object>"
+    "blog_text": "<br /><br />\n\n<object width=\"425\" height=\"344\"><param name=\"movie\" value=\"https://www.youtube.com/v/PPWSUy75pIo&hl=en&fs=1&\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"https://www.youtube.com/v/PPWSUy75pIo&hl=en&fs=1&\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"425\" height=\"344\"></embed></object>"
   },
   "167": {
     "title": "Gracefully",
@@ -2517,7 +2517,7 @@
     "image_height": "377",
     "previous_id": 246,
     "next_id": 248,
-    "blog_text": "<br /><br />\n\n<object width=\"425\" height=\"344\"><param name=\"movie\" value=\"http://www.youtube-nocookie.com/v/Suugn-p5C1M&hl=en_US&fs=1&rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"https://www.youtube-nocookie.com/v/Suugn-p5C1M&hl=en_US&fs=1&rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"425\" height=\"344\"></embed></object>"
+    "blog_text": "<br /><br />\n\n<object width=\"425\" height=\"344\"><param name=\"movie\" value=\"https://www.youtube-nocookie.com/v/Suugn-p5C1M&hl=en_US&fs=1&rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"https://www.youtube-nocookie.com/v/Suugn-p5C1M&hl=en_US&fs=1&rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"425\" height=\"344\"></embed></object>"
   },
   "248": {
     "title": "It's Like Magic",
@@ -2673,7 +2673,7 @@
     "image_height": "2543",
     "previous_id": 260,
     "next_id": 262,
-    "blog_text": "<strong>BONUS VIDEO:</strong><br /><br />\n\n<object width=\"480\" height=\"385\"><param name=\"movie\" value=\"http://www.youtube.com/v/f9bov0rVRMw&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"https://www.youtube.com/v/f9bov0rVRMw&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"480\" height=\"385\"></embed></object><br /><br />\n\nThis video is based on <a href=\"/215\" >this comic</a>.  Thanks, Pavel."
+    "blog_text": "<strong>BONUS VIDEO:</strong><br /><br />\n\n<object width=\"480\" height=\"385\"><param name=\"movie\" value=\"https://www.youtube.com/v/f9bov0rVRMw&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"https://www.youtube.com/v/f9bov0rVRMw&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"480\" height=\"385\"></embed></object><br /><br />\n\nThis video is based on <a href=\"/215\" >this comic</a>.  Thanks, Pavel."
   },
   "262": {
     "title": "root",
@@ -2853,7 +2853,7 @@
     "image_height": "376",
     "previous_id": 278,
     "next_id": 280,
-    "blog_text": "<strong>EDIT:</strong> This video will bring a smile to your lips and a tear to your eye (thanks, Zefiro).<br /><br />\n\n<object width=\"480\" height=\"385\"><param name=\"movie\" value=\"http://www.youtube.com/v/Cbk980jV7Ao&hl=en_US&fs=1&rel=0&color1=0x3a3a3a&color2=0x999999\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"https://www.youtube.com/v/Cbk980jV7Ao&hl=en_US&fs=1&rel=0&color1=0x3a3a3a&color2=0x999999\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"480\" height=\"385\"></embed></object>"
+    "blog_text": "<strong>EDIT:</strong> This video will bring a smile to your lips and a tear to your eye (thanks, Zefiro).<br /><br />\n\n<object width=\"480\" height=\"385\"><param name=\"movie\" value=\"https://www.youtube.com/v/Cbk980jV7Ao&hl=en_US&fs=1&rel=0&color1=0x3a3a3a&color2=0x999999\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"https://www.youtube.com/v/Cbk980jV7Ao&hl=en_US&fs=1&rel=0&color1=0x3a3a3a&color2=0x999999\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"480\" height=\"385\"></embed></object>"
   },
   "280": {
     "title": "A Mathematical Theory of Communication",
@@ -5877,7 +5877,7 @@
     "image_height": null,
     "previous_id": 575,
     "next_id": 577,
-    "blog_text": "<p align=\"center\"><br />(support creators who make stuff for free)</p>\n<ul>\n\t<li>\n\t\t<p>This game is largely based on a <a href=\"https://blog.sklambert.com/galaxian-html5-game/\" target=\"_blank\">tutorial by Steven Lambert</a></p>\n\t</li>\n\t<li>\n\t\t<p>Song:<br /><em>Cyborg Ninja</em> by Kevin MacLeod (<a href=\"https://incompetech.com/wordpress/2016/02/cyborg-ninja/\" target=\"_blank\">incompetech.com</a>)<br />\n\t\tLicensed under Creative Commons: By Attribution 3.0 License<br />\n\t\t<a href=\"https://creativecommons.org/licenses/by/3.0/\" target=\"_blank\">http://creativecommons.org/licenses/by/3.0/</a></p>\n\t</li>\n\t<li>\n\t\t<p>Song:<br /><em>Dear Diary</em> by PetterTheSturgeon<br>\n\t\t<a href=\"https://opengameart.org/content/melodic-gentle-ambient-music\" target=\"_blank\">https://opengameart.org/content/melodic-gentle-ambient-music</a><br />\n\t\tLicensed under Creative Commons: By Attribution 3.0 License<br />\n\t\t<a href=\"https://creativecommons.org/licenses/by/3.0/\" target=\"_blank\">http://creativecommons.org/licenses/by/3.0/</a></p>\n\t</li>\n\t<li>\n\t\t<p>Sound effects created with <a href=\"https://www.bfxr.net/\" target=\"_blank\">Bfxr</a> and <a href=\"https://www.audacityteam.org/\" target=\"_blank\">Audacity</a></p>\n\t</li>\n</ul>"
+    "blog_text": "<p align=\"center\"><br />(support creators who make stuff for free)</p>\n<ul>\n\t<li>\n\t\t<p>This game is largely based on a <a href=\"https://blog.sklambert.com/galaxian-html5-game/\" target=\"_blank\">tutorial by Steven Lambert</a></p>\n\t</li>\n\t<li>\n\t\t<p>Song:<br /><em>Cyborg Ninja</em> by Kevin MacLeod (<a href=\"https://incompetech.com/wordpress/2016/02/cyborg-ninja/\" target=\"_blank\">incompetech.com</a>)<br />\n\t\tLicensed under Creative Commons: By Attribution 3.0 License<br />\n\t\t<a href=\"https://creativecommons.org/licenses/by/3.0/\" target=\"_blank\">https://creativecommons.org/licenses/by/3.0/</a></p>\n\t</li>\n\t<li>\n\t\t<p>Song:<br /><em>Dear Diary</em> by PetterTheSturgeon<br>\n\t\t<a href=\"https://opengameart.org/content/melodic-gentle-ambient-music\" target=\"_blank\">https://opengameart.org/content/melodic-gentle-ambient-music</a><br />\n\t\tLicensed under Creative Commons: By Attribution 3.0 License<br />\n\t\t<a href=\"https://creativecommons.org/licenses/by/3.0/\" target=\"_blank\">https://creativecommons.org/licenses/by/3.0/</a></p>\n\t</li>\n\t<li>\n\t\t<p>Sound effects created with <a href=\"https://www.bfxr.net/\" target=\"_blank\">Bfxr</a> and <a href=\"https://www.audacityteam.org/\" target=\"_blank\">Audacity</a></p>\n\t</li>\n</ul>"
   },
   "577": {
     "title": "Prime Porkour",
@@ -5889,7 +5889,7 @@
     "image_height": null,
     "previous_id": 576,
     "next_id": 578,
-    "blog_text": "<p style=\"border-top: 1px solid black; padding-top: 25px; border-bottom: 1px solid black; padding-bottom: 25px\">I would consider a score of 3000 to be good. 6000 is superb. If you can <em>finish</em> this game, you are superhuman!</p>\n<p align=\"center\"><br />(support creators who make stuff for free)</p>\n<ul>\n\t<li>\n\t\t<p>This game is powered by <a href=\"https://libgdx.badlogicgames.com/\" target=\"_blank\">LibGDX</a> and by Pied Piper.</p>\n\t</li>\n\t<li>\n\t\t<p>A lot of this game was based on <a href=\"https://www.youtube.com/watch?v=a8MPxzkwBwo&list=PLZm85UZQLd2SXQzsF-a0-pPF6IWDDdrXt\" target=\"_blank\">this tutorial series by Brent Aureli.</a></p>\n\t</li>\n\t<li>\n\t\t<p>Music:<br /><em>Pixelland</em> by Kevin MacLeod (<a href=\"https://incompetech.com/wordpress/2015/11/pixelland/\" target=\"_blank\">incompetech.com</a>)<br />\n\t\tLicensed under Creative Commons: By Attribution 3.0 License<br />\n\t\t<a href=\"https://creativecommons.org/licenses/by/3.0/\" target=\"_blank\">http://creativecommons.org/licenses/by/3.0/</a></p>\n\t</li>\n\t<li>\n\t\t<p>Tile maps created with <a href=\"https://www.mapeditor.org/\" target=\"_blank\">Tiled</a> map editor.</p>\n\t</li>\n\t<li>\n\t\t<p>Sound effects created with <a href=\"https://www.bfxr.net/\" target=\"_blank\">Bfxr</a> and <a href=\"https://www.audacityteam.org/\" target=\"_blank\">Audacity</a></p>\n\t</li>\n\t<li>\n\t\t<p><a href=\"https://soundbible.com/1003-Ta-Da.html\" target=\"_blank\">Ta Da sound effect</a> recorded by Mike Koenig<br />\n\t\tLicensed under Creative Commons: By Attribution 3.0 License<br />\n\t\t<a href=\"https://creativecommons.org/licenses/by/3.0/\" target=\"_blank\">http://creativecommons.org/licenses/by/3.0/</a></p>\n\t</li>\n\t<li>\n\t\t<p>Expee UI skin by <a href=\"https://www.badlogicgames.com/forum/viewtopic.php?f=22&t=22887\" target=\"_blank\">Raymond \"Raeleus\" Buckley</a><br />[CC BY-SA 2.0] (<a href=\"https://creativecommons.org/licenses/by-sa/2.0/\" target=\"_blank\">https://creativecommons.org/licenses/by-sa/2.0/)</a></p>\n\t</li>\n</ul>"
+    "blog_text": "<p style=\"border-top: 1px solid black; padding-top: 25px; border-bottom: 1px solid black; padding-bottom: 25px\">I would consider a score of 3000 to be good. 6000 is superb. If you can <em>finish</em> this game, you are superhuman!</p>\n<p align=\"center\"><br />(support creators who make stuff for free)</p>\n<ul>\n\t<li>\n\t\t<p>This game is powered by <a href=\"https://libgdx.badlogicgames.com/\" target=\"_blank\">LibGDX</a> and by Pied Piper.</p>\n\t</li>\n\t<li>\n\t\t<p>A lot of this game was based on <a href=\"https://www.youtube.com/watch?v=a8MPxzkwBwo&list=PLZm85UZQLd2SXQzsF-a0-pPF6IWDDdrXt\" target=\"_blank\">this tutorial series by Brent Aureli.</a></p>\n\t</li>\n\t<li>\n\t\t<p>Music:<br /><em>Pixelland</em> by Kevin MacLeod (<a href=\"https://incompetech.com/wordpress/2015/11/pixelland/\" target=\"_blank\">incompetech.com</a>)<br />\n\t\tLicensed under Creative Commons: By Attribution 3.0 License<br />\n\t\t<a href=\"https://creativecommons.org/licenses/by/3.0/\" target=\"_blank\">https://creativecommons.org/licenses/by/3.0/</a></p>\n\t</li>\n\t<li>\n\t\t<p>Tile maps created with <a href=\"https://www.mapeditor.org/\" target=\"_blank\">Tiled</a> map editor.</p>\n\t</li>\n\t<li>\n\t\t<p>Sound effects created with <a href=\"https://www.bfxr.net/\" target=\"_blank\">Bfxr</a> and <a href=\"https://www.audacityteam.org/\" target=\"_blank\">Audacity</a></p>\n\t</li>\n\t<li>\n\t\t<p><a href=\"https://soundbible.com/1003-Ta-Da.html\" target=\"_blank\">Ta Da sound effect</a> recorded by Mike Koenig<br />\n\t\tLicensed under Creative Commons: By Attribution 3.0 License<br />\n\t\t<a href=\"https://creativecommons.org/licenses/by/3.0/\" target=\"_blank\">https://creativecommons.org/licenses/by/3.0/</a></p>\n\t</li>\n\t<li>\n\t\t<p>Expee UI skin by <a href=\"https://www.badlogicgames.com/forum/viewtopic.php?f=22&t=22887\" target=\"_blank\">Raymond \"Raeleus\" Buckley</a><br />[CC BY-SA 2.0] (<a href=\"https://creativecommons.org/licenses/by-sa/2.0/\" target=\"_blank\">https://creativecommons.org/licenses/by-sa/2.0/)</a></p>\n\t</li>\n</ul>"
   },
   "578": {
     "title": "Karpathy's Basilisk",

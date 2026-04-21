@@ -20,15 +20,18 @@ def fix_url(url):
         return url[len('https://abstrusegoose.com'):]
     return url
 
-URL_ATTR_PATTERN = re.compile(r'''(\b(?:href|src)\s*=\s*)(["'])(.*?)\2''')
+URL_ATTR_PATTERN = re.compile(r'''(\b(?:href|src|value)\s*=\s*)(["'])(.*?)\2''')
+BARE_URL_PATTERN = re.compile(r'''(?<!=["'])http://\S+''')
 
 def fix_html(text):
     if text is None:
         return text
-    def replace(match):
+    def replace_attr(match):
         prefix, quote, url = match.group(1), match.group(2), match.group(3)
         return f'{prefix}{quote}{fix_url(url)}{quote}'
-    return URL_ATTR_PATTERN.sub(replace, text)
+    text = URL_ATTR_PATTERN.sub(replace_attr, text)
+    text = BARE_URL_PATTERN.sub(lambda m: fix_url(m.group()), text)
+    return text
 
 
 def parse_page(content):

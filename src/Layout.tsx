@@ -45,7 +45,7 @@ function Layout() {
           <a href="https://www.exocomics.com">EXTRAORDINARY</a>&nbsp;&nbsp;
           <a href="https://pbfcomics.com">PBF</a>&nbsp;&nbsp;
           <a href="https://web.archive.org/web/*/popstrip.com">popstrip</a>&nbsp;&nbsp;
-          <a href="https://spikedmath.com">spiked math</a>&nbsp;&nbsp;
+          <a href="https://web.archive.org/web/*/spikedmath.com">spiked math</a>&nbsp;&nbsp;
           <a href="https://www.xkcd.com">xkcd</a>
         </div>
 
