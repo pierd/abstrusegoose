@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "parse-pages": "uv run python parse_page.py raw/abstrusegoose.com/{0..575}.html raw/abstrusegoose.com/secretarchives/* > src/strips.json"
+    "parse-pages": "uv run python parse_page.py raw/abstrusegoose.com/{1..611}.html raw/abstrusegoose.com/secretarchives/* > src/strips.json"
   },
   "dependencies": {
     "react": "^19.2.5",

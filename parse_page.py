@@ -3,20 +3,8 @@ import json
 import re
 import sys
 
-PAGE_PATTERN = re.compile(r'''<!DOCTYPE html>
-<html lang="en">
-  <head>.*?</head>
-<body>
+from bs4 import BeautifulSoup
 
-  <header>.*?</header>
-  <section>
-  (<p>(<a href="http://abstrusegoose.com/\d+">)?&laquo;&laquo; First(</a>)?&nbsp;&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/(?P<previous_id>\d+)">)?&laquo; Previous(</a>)?&nbsp;&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;<a href="http://abstrusegoose.com/pseudorandom.php" >Random</a>&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/(?P<next_id>\d+)">)?Next &raquo;(<a>)?&nbsp;&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/">)?Current &raquo;&raquo;(</a>)?</p>\s*)?<h1 class="storytitle"><a href="http://abstrusegoose.com/(?P<current_id>[^"]+)">(<div align="left">)?(?P<header>[^<]*)(</div>)?</a></h1><br>
-  ((<a href="(?P<image_anchor>[^"]+)"(\s+target="_blank")?\s*>)?<img( class="(?P<image_classes>[^"]+)")?(\s+title="(?P<image_title>[^"]*)")?\s+src="(?P<image_url>[^"]+)"(\s+alt="(?P<image_alt>[^+]*)")?(\s+title="(?P<image_title2>[^"]+)")?\s+width="(?P<image_width>\d+)" height="(?P<image_height>\d+)"(\s*title="(?P<image_title3>[^"]*)")? */?>(</a>)?)?\s*(<br />\s*)*\s*<div id="blog_text">(?P<blog_text>.*?)</div>
-  (<p>(<a href="http://abstrusegoose.com/\d+">)?&laquo;&laquo; First(</a>)?&nbsp;&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/\d+">)?&laquo; Previous(</a>)?&nbsp;&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;<a href="http://abstrusegoose.com/pseudorandom.php" >Random</a>&nbsp;&nbsp;&nbsp;\|&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/\d+">)?Next &raquo;(<a>)?&nbsp;&nbsp;&nbsp;&nbsp;(<a href="http://abstrusegoose.com/">)?Current &raquo;&raquo;(</a>)?</p>\s*)?</section>
-  <footer>.*?</footer>
-</body>
-</html>
-<!-- cached with Cache Goose -->''', re.MULTILINE | re.DOTALL)
 
 def unescape(text):
     if text is None:
@@ -40,7 +28,117 @@ def fix_html(text):
     def replace(match):
         prefix, quote, url = match.group(1), match.group(2), match.group(3)
         return f'{prefix}{quote}{fix_url(url)}{quote}'
-    return URL_ATTR_PATTERN.sub(replace, unescape(text))
+    return URL_ATTR_PATTERN.sub(replace, text)
+
+
+def parse_page(content):
+    soup = BeautifulSoup(content, 'html.parser')
+
+    section = soup.find('section')
+    if section is None:
+        return None
+
+    # Find the story title h1
+    h1 = section.find('h1', class_='storytitle')
+    if h1 is None:
+        return None
+
+    # Extract current_id and title from h1 > a
+    title_link = h1.find('a')
+    if title_link is None:
+        return None
+
+    title = title_link.get_text()
+
+    # Find the comic image (the main img in the section, not in header/footer)
+    # It's the img tag that's a sibling of h1 (after it), typically with src containing "strips/"
+    # or just the first img in section that's not inside a nav/p element
+    blog_text_div = section.find('div', id='blog_text')
+    if blog_text_div is None:
+        return None
+
+    # Find the img tag: it should be between h1 and blog_text_div
+    # Look for img tags that are direct or near-direct children of section
+    img = None
+    # The img might be wrapped in an <a> tag
+    # Search for all img tags in section that are NOT inside the nav <p> elements
+    for candidate in section.find_all('img'):
+        # Skip images inside nav paragraphs (they wouldn't have width/height typically)
+        parent_p = candidate.find_parent('p')
+        if parent_p:
+            continue
+        # Skip images inside blog_text
+        if candidate.find_parent('div', id='blog_text'):
+            continue
+        img = candidate
+        break
+
+    # Extract navigation info (previous_id and next_id) from the first <p> nav bar
+    previous_id = None
+    next_id = None
+    nav_p = section.find('p')
+    if nav_p:
+        nav_links = nav_p.find_all('a')
+        for link in nav_links:
+            href = link.get('href', '')
+            link_text = link.get_text()
+            if 'Previous' in link_text:
+                # Extract the ID from the URL
+                match = re.search(r'/(\d+)$', href)
+                if match:
+                    previous_id = int(match.group(1))
+            elif 'Next' in link_text:
+                match = re.search(r'/(\d+)$', href)
+                if match:
+                    next_id = int(match.group(1))
+
+    # Extract image data
+    image_title = None
+    image_url = None
+    image_anchor = None
+    image_alt = None
+    image_width = None
+    image_height = None
+
+    if img:
+        image_title = img.get('title')
+        if image_title is None:
+            pass  # no title attribute
+        elif image_title == '':
+            image_title = ''  # explicitly empty title=""
+        image_url = fix_url(img.get('src'))
+        image_alt = img.get('alt')
+        image_width = img.get('width')
+        image_height = img.get('height')
+
+        # Check if image is wrapped in an anchor
+        parent = img.parent
+        if parent and parent.name == 'a':
+            image_anchor = fix_url(parent.get('href'))
+
+    # Extract blog_text inner HTML using regex on raw content to preserve
+    # original HTML formatting (BeautifulSoup normalizes br tags, attribute
+    # order, etc. which changes the output)
+    blog_text = ''
+    blog_text_match = re.search(
+        r'<div id="blog_text">(.*?)</div>', content, re.DOTALL
+    )
+    if blog_text_match:
+        blog_text = fix_html(unescape(blog_text_match.group(1))).strip()
+
+    return dict(
+        title=title,
+        image_title=unescape(image_title),
+        image_url=image_url,
+        image_anchor=image_anchor,
+        image_alt=unescape(image_alt),
+        image_width=image_width,
+        image_height=image_height,
+        previous_id=previous_id,
+        next_id=next_id,
+        blog_text=blog_text,
+    )
+
 
 if __name__ == '__main__':
     pages = {}
@@ -48,28 +146,13 @@ if __name__ == '__main__':
         try:
             page_id = '/'.join(path.split('/')[2:]).split('.')[0]
             with open(path) as f:
-                matches = PAGE_PATTERN.match(f.read())
-                if matches is None:
+                result = parse_page(f.read())
+                if result is None:
                     print(path, "match failed!")
                     break
-                page_data = dict(matches.groupdict())
-                # print(path, page_data)
-                image_title = page_data['image_title'] or page_data['image_title2'] or page_data['image_title3']
-                pages[page_id] = dict(
-                    title=unescape(page_data['header']),
-                    image_title=unescape(image_title),
-                    image_url=fix_url(page_data['image_url']),
-                    image_anchor=fix_url(page_data['image_anchor']),
-                    image_alt=unescape(page_data['image_alt']),
-                    image_width=page_data['image_width'],
-                    image_height=page_data['image_height'],
-                    previous_id=int(page_data['previous_id']) if page_data['previous_id'] is not None else None,
-                    next_id=int(page_data['next_id']) if page_data['next_id'] is not None else None,
-                    blog_text=fix_html(page_data['blog_text']),
-                )
+                pages[page_id] = result
         except IOError as e:
             if hasattr(e, "errno") and e.errno == 2:
-                # print(path, "not found")
                 pass
             else:
                 print(path, e)
@@ -78,6 +161,3 @@ if __name__ == '__main__':
             print(path, e)
             break
     print(json.dumps(pages, indent=2))
-    # for pid, page in pages.items():
-    #     if page['blog_text']:
-    #         print(pid, page['blog_text'])
