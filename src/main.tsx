@@ -9,6 +9,7 @@ import Faq from './pages/Faq.tsx'
 import Archive from './pages/Archive.tsx'
 import FeedTheGoose from './pages/FeedTheGoose.tsx'
 import ComicStrip from './pages/ComicStrip.tsx'
+import MissingSecretArchive from './pages/MissingSecretArchive.tsx'
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
@@ -22,6 +23,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="faq" element={<Faq />} />
           <Route path="archive" element={<Archive />} />
           <Route path="feedthegoose" element={<FeedTheGoose />} />
+          <Route path="secretarchives/how" element={<MissingSecretArchive />} />
           <Route path="*" element={<ComicStrip />} />
         </Route>
       </Routes>
