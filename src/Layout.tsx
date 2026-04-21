@@ -39,25 +39,25 @@ function Layout() {
           <p>
             <b>melikes</b>
           </p>
-          <a href="http://brownsharpie.courtneygibbons.org">Brown Sharpie</a>
+          <a href="https://brownsharpie.courtneygibbons.org">Brown Sharpie</a>
           &nbsp;&nbsp;
-          <a href="http://www.explosm.net/comics/new">Cy&H</a>&nbsp;&nbsp;
-          <a href="http://www.exocomics.com">EXTRAORDINARY</a>&nbsp;&nbsp;
-          <a href="http://pbfcomics.com">PBF</a>&nbsp;&nbsp;
-          <a href="http://popstrip.com">popstrip</a>&nbsp;&nbsp;
-          <a href="http://spikedmath.com">spiked math</a>&nbsp;&nbsp;
-          <a href="http://www.xkcd.com">xkcd</a>
+          <a href="https://www.explosm.net/comics/new">Cy&H</a>&nbsp;&nbsp;
+          <a href="https://www.exocomics.com">EXTRAORDINARY</a>&nbsp;&nbsp;
+          <a href="https://pbfcomics.com">PBF</a>&nbsp;&nbsp;
+          <a href="https://web.archive.org/web/*/popstrip.com">popstrip</a>&nbsp;&nbsp;
+          <a href="https://spikedmath.com">spiked math</a>&nbsp;&nbsp;
+          <a href="https://www.xkcd.com">xkcd</a>
         </div>
 
         <div className="creativecommons">
           <a
             rel="license"
-            href="http://creativecommons.org/licenses/by-nc/3.0/us/"
+            href="https://creativecommons.org/licenses/by-nc/3.0/us/"
           >
             <img
               alt="Creative Commons License"
               style={{ borderWidth: 0 }}
-              src="http://creativecommons.org/images/public/somerights20.png"
+              src="https://creativecommons.org/images/public/somerights20.png"
             />
           </a>
           &nbsp;
@@ -66,7 +66,7 @@ function Layout() {
           This work is licensed under a{" "}
           <a
             rel="license"
-            href="http://creativecommons.org/licenses/by-nc/3.0/us/"
+            href="https://creativecommons.org/licenses/by-nc/3.0/us/"
           >
             Creative Commons Attribution-Noncommercial 3.0 United States License
           </a>

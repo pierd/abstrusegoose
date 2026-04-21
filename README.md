@@ -15,6 +15,7 @@ strips stay reachable.
 - The original "store" link (that led to a defunct store page) has been replaced with "report an issue" link leading to new GitHub issue page.
 - Minor encoding fixes.
 - All links have been changed from "http://" to "https://".
+- Some links to external sites stopped working (websites no longer there), they have been changed with Internet Archive URLs.
 
 ## Development
 
