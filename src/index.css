@@ -143,3 +143,41 @@ ul {
   padding: 0;
   font-size: 110%;
 }
+
+.search-input {
+  font-size: 100%;
+  padding: 0.3em 0.5em;
+  width: 60%;
+  max-width: 500px;
+  border: 1px solid #666;
+  border-radius: 4px;
+}
+
+.search-results {
+  list-style-type: none;
+  text-align: left;
+  margin: 0 8%;
+  padding: 0;
+  font-size: 85%;
+}
+
+.search-result {
+  padding: 0.4em 0;
+  border-bottom: 1px solid #eee;
+}
+
+.search-result a {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.search-result-thumb {
+  width: 100px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.search-result-title {
+  font-weight: bold;
+}

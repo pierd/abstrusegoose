@@ -33,6 +33,8 @@ function Layout() {
           <Link to="/feedthegoose">FEED THE GOOSE</Link>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a href="https://github.com/pierd/abstrusegoose/issues/new" target="_blank">REPORT AN ISSUE</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <Link to="/search">SEARCH</Link>
         </nav>
 
         <div id="melikes">

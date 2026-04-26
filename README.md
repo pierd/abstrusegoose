@@ -13,6 +13,7 @@ strips stay reachable.
 - The retrieved copy of the original has been reversed engineered to extract images, titles, alt text, links, blog text, styles, etc. A new React based app has been created based on that. So in a sense this mirror is not a true mirror.
 - The original "privacy" page has been replaced with "about this mirror" page since there's no useful info about privacy (this mirror doesn't have any tracking or 3rd party tools).
 - The original "store" link (that led to a defunct store page) has been replaced with "report an issue" link leading to new GitHub issue page.
+- "search" has been added.
 - Minor encoding fixes.
 - All links have been changed from "http://" to "https://".
 - Some links to external sites stopped working (websites no longer there), they have been changed with Internet Archive URLs.
