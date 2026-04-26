@@ -40,9 +40,12 @@ offline data-pipeline tools.
 - **`parse_page.py`** -- Parses the downloaded HTML files under
   `raw/abstrusegoose.com/` and emits `src/strips.json`. Run via
   `pnpm parse-pages`.
-- **`build_search_index.py`** -- Reads `src/strips.json` and emits
-  `src/searchIndex.json` (titles + plain-text blog content) for the
-  client-side fuzzy search. Run via `pnpm build-search-index`.
+- **`build_search_index.py`** -- Reads `src/strips.json`, OCRs each comic
+  image (via `pytesseract` / system `tesseract`), and emits
+  `src/searchIndex.json` (titles + plain-text blog content + OCR'd
+  in-comic text) for the client-side fuzzy search. OCR results are cached
+  in `.ocr_cache.json` (keyed by image path + mtime) so reruns are cheap.
+  Run via `pnpm build-search-index`.
 
 ### Deployment
 

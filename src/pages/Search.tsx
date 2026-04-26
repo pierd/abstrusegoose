@@ -29,6 +29,7 @@ function Search() {
         keys: [
           { name: "title", weight: 2 },
           { name: "blog", weight: 1 },
+          { name: "ocr", weight: 1 },
           { name: "image_alt", weight: 1 },
           { name: "image_title", weight: 1 },
         ],
