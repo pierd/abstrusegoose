@@ -1,8 +1,41 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Fuse from "fuse.js";
 import { searchIndex, type SearchEntry } from "../searchIndex";
 import { strips } from "../strips";
+import type {
+  VectorSearchHit,
+  WorkerToMainMessage,
+} from "../searchWorkerMessages";
+
+type WorkerStatus = "loading" | "ready" | "error";
+
+function ResultList({ items }: { items: { id: string; entry?: SearchEntry }[] }) {
+  if (items.length === 0) return null;
+  return (
+    <ul className="search-results">
+      {items.map(({ id, entry }) => {
+        const strip = strips[id];
+        const imgUrl = strip?.image_url ?? null;
+        const title = entry?.title ?? strip?.title ?? strip?.image_alt ?? id;
+        return (
+          <li key={id} className="search-result">
+            <Link to={`/${id}`}>
+              {imgUrl ? (
+                <img
+                  className="search-result-thumb"
+                  src={imgUrl}
+                  alt={strip?.image_alt ?? ""}
+                />
+              ) : null}
+              <span className="search-result-title">{title}</span>
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
 
 function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,6 +56,13 @@ function Search() {
     return () => clearTimeout(handle);
   }, [input, setSearchParams]);
 
+  // --------------------------- Fuzzy (Fuse.js) --------------------------- //
+  const entriesById = useMemo(() => {
+    const map: Record<string, SearchEntry> = {};
+    for (const e of searchIndex) map[e.id] = e;
+    return map;
+  }, []);
+
   const fuse = useMemo(
     () =>
       new Fuse<SearchEntry>(searchIndex, {
@@ -41,10 +81,100 @@ function Search() {
   );
 
   const trimmedQuery = query.trim();
-  const results = useMemo(() => {
+  const fuzzyResults = useMemo(() => {
     if (trimmedQuery.length < 2) return [];
-    return fuse.search(trimmedQuery).slice(0, 100);
+    return fuse.search(trimmedQuery).slice(0, 50);
   }, [fuse, trimmedQuery]);
+
+  // --------------------------- Vector (worker) --------------------------- //
+  const workerRef = useRef<Worker | null>(null);
+  const [workerStatus, setWorkerStatus] = useState<WorkerStatus>("loading");
+  const [workerError, setWorkerError] = useState<string | null>(null);
+  const [vectorHits, setVectorHits] = useState<{
+    query: string;
+    hits: VectorSearchHit[];
+  }>({ query: "", hits: [] });
+  const requestIdRef = useRef(0);
+  const requestQueriesRef = useRef<Map<number, string>>(new Map());
+
+  useEffect(() => {
+    const worker = new Worker(
+      new URL("../searchWorker.ts", import.meta.url),
+      { type: "module" },
+    );
+    workerRef.current = worker;
+
+    worker.onmessage = (event: MessageEvent<WorkerToMainMessage>) => {
+      const msg = event.data;
+      switch (msg.type) {
+        case "ready":
+          setWorkerStatus("ready");
+          break;
+        case "error":
+          setWorkerError(msg.error);
+          if (msg.requestId === -1) setWorkerStatus("error");
+          requestQueriesRef.current.delete(msg.requestId);
+          break;
+        case "results": {
+          const q = requestQueriesRef.current.get(msg.requestId);
+          requestQueriesRef.current.delete(msg.requestId);
+          if (q !== undefined && msg.requestId === requestIdRef.current) {
+            setVectorHits({ query: q, hits: msg.hits });
+          }
+          break;
+        }
+      }
+    };
+
+    worker.onerror = (e) => {
+      console.error("Search worker error:", e);
+      setWorkerStatus("error");
+      setWorkerError(e.message || "Worker error");
+    };
+
+    return () => {
+      worker.terminate();
+      workerRef.current = null;
+    };
+  }, []);
+
+  // Trigger vector search whenever query / worker readiness change.
+  // We don't setState in this effect; instead, we derive `vectorPending`
+  // from comparing the current query to the last query we have results for.
+  useEffect(() => {
+    if (workerStatus !== "ready" || !workerRef.current) return;
+    if (trimmedQuery.length < 2) return;
+    const requestId = ++requestIdRef.current;
+    requestQueriesRef.current.set(requestId, trimmedQuery);
+    workerRef.current.postMessage({
+      type: "search",
+      requestId,
+      query: trimmedQuery,
+      topK: 20,
+    });
+  }, [trimmedQuery, workerStatus]);
+
+  // ----------------------------- Rendering ------------------------------- //
+  const fuzzyIds = useMemo(
+    () => new Set(fuzzyResults.map((r) => r.item.id)),
+    [fuzzyResults],
+  );
+
+  // Filter vector hits to: (a) decent similarity, (b) not already shown
+  // in fuzzy results, (c) for the current query (results from a previous
+  // query are dropped).
+  const VECTOR_MIN_SCORE = 0.3;
+  const vectorOnly = useMemo(() => {
+    if (vectorHits.query !== trimmedQuery) return [];
+    return vectorHits.hits
+      .filter((h) => h.score >= VECTOR_MIN_SCORE && !fuzzyIds.has(h.id))
+      .slice(0, 15);
+  }, [vectorHits, fuzzyIds, trimmedQuery]);
+
+  const vectorPending =
+    workerStatus === "ready" &&
+    trimmedQuery.length >= 2 &&
+    vectorHits.query !== trimmedQuery;
 
   return (
     <div id="pages_container">
@@ -65,32 +195,50 @@ function Search() {
       </p>
 
       {trimmedQuery.length === 0 ? (
-        <p>Type to search through comic titles and blog text.</p>
+        <p>Type to search through comic titles, blog text, and in-comic text.</p>
       ) : trimmedQuery.length < 2 ? (
         <p>Type at least 2 characters.</p>
-      ) : results.length === 0 ? (
-        <p>No results for &ldquo;{trimmedQuery}&rdquo;.</p>
       ) : (
-        <ul className="search-results">
-          {results.map(({ item }) => {
-            const strip = strips[item.id];
-            const imgUrl = strip?.image_url ?? null;
-            return (
-              <li key={item.id} className="search-result">
-                <Link to={`/${item.id}`}>
-                  {imgUrl ? (
-                    <img
-                      className="search-result-thumb"
-                      src={imgUrl}
-                      alt={strip?.image_alt ?? ""}
-                    />
-                  ) : null}
-                  <span className="search-result-title">{item.title}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <>
+          {fuzzyResults.length > 0 ? (
+            <>
+              <h2 className="search-section-heading">Text matches</h2>
+              <ResultList
+                items={fuzzyResults.map((r) => ({
+                  id: r.item.id,
+                  entry: r.item,
+                }))}
+              />
+            </>
+          ) : (
+            <p>No text matches for &ldquo;{trimmedQuery}&rdquo;.</p>
+          )}
+
+          <h2 className="search-section-heading">
+            Semantic matches
+            {workerStatus === "loading" && (
+              <span className="search-status"> (loading model...)</span>
+            )}
+            {workerStatus === "ready" && vectorPending && (
+              <span className="search-status"> (searching...)</span>
+            )}
+            {workerStatus === "error" && (
+              <span className="search-status">
+                {" "}(unavailable: {workerError})
+              </span>
+            )}
+          </h2>
+          {workerStatus === "ready" && !vectorPending && vectorOnly.length === 0 ? (
+            <p>No additional semantic matches.</p>
+          ) : (
+            <ResultList
+              items={vectorOnly.map((h) => ({
+                id: h.id,
+                entry: entriesById[h.id],
+              }))}
+            />
+          )}
+        </>
       )}
     </div>
   );

@@ -2,10 +2,20 @@
 name = "abstrusegoose-wayback"
 version = "0.1.0"
 description = "Resumable Wayback mirror downloader for abstrusegoose.com"
-requires-python = ">=3.10"
+requires-python = ">=3.10,<3.13"
 dependencies = [
     "beautifulsoup4>=4.14.3",
     "pillow>=12.2.0",
     "pytesseract>=0.3.13",
     "wayback>=0.4.5",
+]
+
+[project.optional-dependencies]
+# Optional: only needed for `build_search_index.py --embed` (pre-computing
+# Universal Sentence Encoder embeddings to ship in the static index).
+embed = [
+    # tensorflow-hub still uses pkg_resources, removed in setuptools 81+
+    "setuptools>=70,<81",
+    "tensorflow>=2.15,<2.17",
+    "tensorflow-hub>=0.16",
 ]

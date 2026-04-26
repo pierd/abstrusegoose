@@ -27,5 +27,6 @@ dist-ssr
 __pycache__
 .venv
 
-# OCR cache for build_search_index.py
+# Caches for build_search_index.py
 .ocr_cache.json
+.embedding_cache.json

@@ -46,6 +46,13 @@ offline data-pipeline tools.
   in-comic text) for the client-side fuzzy search. OCR results are cached
   in `.ocr_cache.json` (keyed by image path + mtime) so reruns are cheap.
   Run via `pnpm build-search-index`.
+  With `--embed` (run via `pnpm build-search-index-embed`) it also
+  computes Universal Sentence Encoder embeddings for each entry and
+  writes them to `src/searchEmbeddings.json` (a separate file so the
+  fuzzy-search bundle isn't bloated). Embeddings are cached in
+  `.embedding_cache.json` (keyed by sha256 of the input text). The
+  `--embed` path requires the `embed` extra (`uv sync --extra embed`,
+  pulls in TensorFlow + tensorflow-hub, ~1 GB install).
 
 ### Deployment
 
@@ -64,6 +71,7 @@ offline data-pipeline tools.
 | `src/pages/` | Page components (one per route) |
 | `src/strips.json` | Generated comic data (do not edit by hand) |
 | `src/searchIndex.json` | Generated client-side fuzzy-search index (do not edit by hand) |
+| `src/searchEmbeddings.json` | Generated USE embeddings for vector search (do not edit by hand; only generated with `--embed`) |
 | `public/strips/` | Comic strip images |
 | `public/images/` | Site images (logo, etc.) |
 | `raw/` | Downloaded Wayback Machine pages (not deployed) |

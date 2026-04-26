@@ -181,3 +181,18 @@ ul {
 .search-result-title {
   font-weight: bold;
 }
+
+.search-section-heading {
+  font-size: 90%;
+  margin: 1em 8% 0.3em;
+  text-align: left;
+  color: #006699;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.2em;
+}
+
+.search-status {
+  font-size: 80%;
+  font-weight: normal;
+  color: #888;
+}
