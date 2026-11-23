@@ -57,6 +57,11 @@ function ComicStrip() {
       height={strip.image_height ?? undefined}
       title={strip.image_title ?? undefined}
     />
+  ) : strip.iframe_url && !navigator.onLine ? (
+    // Games / interactive comics aren't part of the offline download.
+    <p>
+      <em>This strip is interactive and isn&rsquo;t available offline.</em>
+    </p>
   ) : strip.iframe_url ? (
     <iframe
       src={strip.iframe_url}

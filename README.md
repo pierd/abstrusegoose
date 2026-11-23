@@ -14,6 +14,7 @@ strips stay reachable.
 - The original "privacy" page has been replaced with "about this mirror" page since there's no useful info about privacy (this mirror doesn't have any tracking or 3rd party tools).
 - The original "store" link (that led to a defunct store page) has been replaced with "report an issue" link leading to new GitHub issue page.
 - "search" has been added.
+- The site can be installed as an app (PWA), and all comics can be downloaded for offline reading ("offline reading" link in the footer). The installed app reopens on the last page you viewed.
 - Minor encoding fixes.
 - All links have been changed from "http://" to "https://".
 - Some links to external sites stopped working (websites no longer there), they have been changed with Internet Archive URLs.

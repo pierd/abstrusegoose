@@ -1,6 +1,8 @@
 import { Link, Outlet } from "react-router-dom";
+import { useRememberPage } from "./lastPage";
 
 function Layout() {
+  useRememberPage();
   return (
     <>
       <header>
@@ -88,6 +90,8 @@ function Layout() {
             <Link to="/faq">faq</Link>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Link to="/about-this-mirror">about this mirror</Link>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Link to="/offline">offline reading</Link>
           </p>
         </div>
       </footer>

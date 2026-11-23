@@ -11,8 +11,21 @@ import FeedTheGoose from './pages/FeedTheGoose.tsx'
 import ComicStrip from './pages/ComicStrip.tsx'
 import MissingSecretArchive from './pages/MissingSecretArchive.tsx'
 import RandomStrip from './pages/RandomStrip.tsx'
+import Offline from './pages/Offline.tsx'
 import Search from './pages/SearchLazy.tsx'
+import { resumeLastPage } from './lastPage.ts'
 import './index.css'
+
+// Installed app launches at /?resume: reopen the last viewed page.
+resumeLastPage()
+
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch((e) => {
+      console.error('Service worker registration failed:', e)
+    })
+  })
+}
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -26,6 +39,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="archive" element={<Archive />} />
           <Route path="feedthegoose" element={<FeedTheGoose />} />
           <Route path="random" element={<RandomStrip />} />
+          <Route path="offline" element={<Offline />} />
           <Route path="secretarchives/how" element={<MissingSecretArchive />} />
           <Route
             path="search"

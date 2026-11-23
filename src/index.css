@@ -196,3 +196,16 @@ ul {
   font-weight: normal;
   color: #888;
 }
+
+/* Offline reading page */
+.offline-progress {
+  width: 100%;
+  max-width: 500px;
+}
+
+.offline-actions button {
+  font: inherit;
+  font-size: 80%;
+  margin: 0 0.5em 0.5em 0;
+  padding: 0.4em 0.8em;
+}

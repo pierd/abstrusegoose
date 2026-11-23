@@ -28,6 +28,18 @@ mirror to keep the strips accessible.
 - **Styling:** `src/index.css` -- single global stylesheet.
 - **Config:** `vite.config.ts` -- Vite config with `base` set to
   `https://abstrusegoose.xyz/`.
+- **PWA / offline:** `public/manifest.webmanifest` + `public/icons/` make the
+  site installable. `src/sw.ts` is the service worker, built to `/sw.js` by a
+  small plugin in `vite.config.ts` that injects the app-shell precache list
+  (everything in `assets/` except the semantic-search worker) and emits
+  `/offline-manifest.json` (files under `public/strips`,
+  `public/doublesecretarchives`, `public/how_stuff_works`, with sizes). The
+  shell is precached per build and served cache-first; comic content goes in
+  the unversioned `ag-content-v1` cache, filled from the `/offline` page
+  (`src/offline.ts`). `sw.ts` must not import modules (classic service
+  worker); shared constants come from `define` in `vite.config.ts`. The
+  installed app starts at `/?resume`, which `src/lastPage.ts` turns into the
+  last viewed page (stored in `localStorage`).
 
 ### Python tooling (uv + BeautifulSoup)
 
