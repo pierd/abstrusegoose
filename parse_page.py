@@ -34,6 +34,49 @@ def fix_html(text):
     return text
 
 
+# Flash video players (<object>/<embed> with .swf) no longer work in any
+# browser. YouTube ones become regular iframe embeds; Google Video (shut down
+# in 2012) ones become a note pointing to where the video can be found.
+YOUTUBE_OBJECT_PATTERN = re.compile(
+    r'<object width="(\d+)" height="(\d+)">.*?'
+    r'https://www\.youtube(?:-nocookie)?\.com/v/([A-Za-z0-9_-]{11}).*?</object>',
+    re.DOTALL,
+)
+GOOGLE_VIDEO_EMBED_PATTERN = re.compile(
+    r'<embed[^>]*googleplayer\.swf\?docid=(-?\d+)[^>]*>(?:\s*</embed>)?'
+)
+GOOGLE_VIDEO_REPLACEMENTS = {
+    # Strip 65: "Dangerous Knowledge" (BBC, 2007), parts 1 and 2.
+    '-8492625684649921614': 'Dangerous Knowledge (BBC, 2007)',
+    '-1663091361786740235': 'Dangerous Knowledge (BBC, 2007)',
+}
+
+
+def replace_flash_videos(text):
+    def youtube(match):
+        width, height, video_id = match.groups()
+        return (
+            f'<iframe width="{width}" height="{height}" '
+            f'src="https://www.youtube-nocookie.com/embed/{video_id}" '
+            'title="YouTube video" frameborder="0" loading="lazy" '
+            'allow="fullscreen; picture-in-picture" allowfullscreen></iframe>'
+        )
+
+    def google_video(match):
+        docid = match.group(1)
+        if docid not in GOOGLE_VIDEO_REPLACEMENTS:
+            raise ValueError(f'unknown Google Video docid {docid}')
+        title = GOOGLE_VIDEO_REPLACEMENTS[docid]
+        slug = title.split(' (')[0].replace(' ', '_')
+        return (
+            '<em>(video no longer available: Google Video has shut down; see '
+            f'<a href="https://en.wikipedia.org/wiki/{slug}">{title}</a>)</em>'
+        )
+
+    text = YOUTUBE_OBJECT_PATTERN.sub(youtube, text)
+    return GOOGLE_VIDEO_EMBED_PATTERN.sub(google_video, text)
+
+
 def parse_page(content):
     soup = BeautifulSoup(content, 'html.parser')
 
@@ -142,7 +185,9 @@ def parse_page(content):
         r'<div id="blog_text">(.*?)</div>', content, re.DOTALL
     )
     if blog_text_match:
-        blog_text = fix_html(unescape(blog_text_match.group(1))).strip()
+        blog_text = replace_flash_videos(
+            fix_html(unescape(blog_text_match.group(1)))
+        ).strip()
 
     return dict(
         title=title,

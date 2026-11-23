@@ -822,7 +822,7 @@
     "iframe_height": null,
     "previous_id": 63,
     "next_id": 66,
-    "blog_text": "<p><br /><br />\n<strong>Dangerous Knowledge</strong><br />\nPart 1\n<embed id=\"VideoPlayback\" src=\"https://video.google.com/googleplayer.swf?docid=-8492625684649921614&hl=en&fs=true\" style=\"width:400px;height:326px\" allowFullScreen=\"true\" allowScriptAccess=\"always\" type=\"application/x-shockwave-flash\"> </embed>\n<br />\nPart 2\n<embed id=\"VideoPlayback\" src=\"https://video.google.com/googleplayer.swf?docid=-1663091361786740235&hl=en&fs=true\" style=\"width:400px;height:326px\" allowFullScreen=\"true\" allowScriptAccess=\"always\" type=\"application/x-shockwave-flash\"> </embed></p>"
+    "blog_text": "<p><br /><br />\n<strong>Dangerous Knowledge</strong><br />\nPart 1\n<em>(video no longer available: Google Video has shut down; see <a href=\"https://en.wikipedia.org/wiki/Dangerous_Knowledge\">Dangerous Knowledge (BBC, 2007)</a>)</em>\n<br />\nPart 2\n<em>(video no longer available: Google Video has shut down; see <a href=\"https://en.wikipedia.org/wiki/Dangerous_Knowledge\">Dangerous Knowledge (BBC, 2007)</a>)</em></p>"
   },
   "66": {
     "title": "Cupcakes",
@@ -1467,7 +1467,7 @@
     "iframe_height": null,
     "previous_id": 116,
     "next_id": 118,
-    "blog_text": "<p><strong>HAPPY VALENTINE'S DAY!</strong></p>\n<br />\n<object width=\"425\" height=\"344\"><param name=\"movie\" value=\"https://www.youtube.com/v/UTby_e4-Rhg&hl=en&fs=1\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"https://www.youtube.com/v/UTby_e4-Rhg&hl=en&fs=1\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"425\" height=\"344\"></embed></object>"
+    "blog_text": "<p><strong>HAPPY VALENTINE'S DAY!</strong></p>\n<br />\n<iframe width=\"425\" height=\"344\" src=\"https://www.youtube-nocookie.com/embed/UTby_e4-Rhg\" title=\"YouTube video\" frameborder=\"0\" loading=\"lazy\" allow=\"fullscreen; picture-in-picture\" allowfullscreen></iframe>"
   },
   "118": {
     "title": "Dear Higgs Boson",
@@ -2127,7 +2127,7 @@
     "iframe_height": null,
     "previous_id": 165,
     "next_id": 167,
-    "blog_text": "<br /><br />\n\n<object width=\"425\" height=\"344\"><param name=\"movie\" value=\"https://www.youtube.com/v/PPWSUy75pIo&hl=en&fs=1&\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"https://www.youtube.com/v/PPWSUy75pIo&hl=en&fs=1&\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"425\" height=\"344\"></embed></object>"
+    "blog_text": "<br /><br />\n\n<iframe width=\"425\" height=\"344\" src=\"https://www.youtube-nocookie.com/embed/PPWSUy75pIo\" title=\"YouTube video\" frameborder=\"0\" loading=\"lazy\" allow=\"fullscreen; picture-in-picture\" allowfullscreen></iframe>"
   },
   "167": {
     "title": "Gracefully",
@@ -3147,7 +3147,7 @@
     "iframe_height": null,
     "previous_id": 246,
     "next_id": 248,
-    "blog_text": "<br /><br />\n\n<object width=\"425\" height=\"344\"><param name=\"movie\" value=\"https://www.youtube-nocookie.com/v/Suugn-p5C1M&hl=en_US&fs=1&rel=0\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"https://www.youtube-nocookie.com/v/Suugn-p5C1M&hl=en_US&fs=1&rel=0\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"425\" height=\"344\"></embed></object>"
+    "blog_text": "<br /><br />\n\n<iframe width=\"425\" height=\"344\" src=\"https://www.youtube-nocookie.com/embed/Suugn-p5C1M\" title=\"YouTube video\" frameborder=\"0\" loading=\"lazy\" allow=\"fullscreen; picture-in-picture\" allowfullscreen></iframe>"
   },
   "248": {
     "title": "It's Like Magic",
@@ -3342,7 +3342,7 @@
     "iframe_height": null,
     "previous_id": 260,
     "next_id": 262,
-    "blog_text": "<strong>BONUS VIDEO:</strong><br /><br />\n\n<object width=\"480\" height=\"385\"><param name=\"movie\" value=\"https://www.youtube.com/v/f9bov0rVRMw&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"https://www.youtube.com/v/f9bov0rVRMw&hl=en_US&fs=1&color1=0x3a3a3a&color2=0x999999\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"480\" height=\"385\"></embed></object><br /><br />\n\nThis video is based on <a href=\"/215\" >this comic</a>.  Thanks, Pavel."
+    "blog_text": "<strong>BONUS VIDEO:</strong><br /><br />\n\n<iframe width=\"480\" height=\"385\" src=\"https://www.youtube-nocookie.com/embed/f9bov0rVRMw\" title=\"YouTube video\" frameborder=\"0\" loading=\"lazy\" allow=\"fullscreen; picture-in-picture\" allowfullscreen></iframe><br /><br />\n\nThis video is based on <a href=\"/215\" >this comic</a>.  Thanks, Pavel."
   },
   "262": {
     "title": "root",
@@ -3567,7 +3567,7 @@
     "iframe_height": null,
     "previous_id": 278,
     "next_id": 280,
-    "blog_text": "<strong>EDIT:</strong> This video will bring a smile to your lips and a tear to your eye (thanks, Zefiro).<br /><br />\n\n<object width=\"480\" height=\"385\"><param name=\"movie\" value=\"https://www.youtube.com/v/Cbk980jV7Ao&hl=en_US&fs=1&rel=0&color1=0x3a3a3a&color2=0x999999\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\"https://www.youtube.com/v/Cbk980jV7Ao&hl=en_US&fs=1&rel=0&color1=0x3a3a3a&color2=0x999999\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"480\" height=\"385\"></embed></object>"
+    "blog_text": "<strong>EDIT:</strong> This video will bring a smile to your lips and a tear to your eye (thanks, Zefiro).<br /><br />\n\n<iframe width=\"480\" height=\"385\" src=\"https://www.youtube-nocookie.com/embed/Cbk980jV7Ao\" title=\"YouTube video\" frameborder=\"0\" loading=\"lazy\" allow=\"fullscreen; picture-in-picture\" allowfullscreen></iframe>"
   },
   "280": {
     "title": "A Mathematical Theory of Communication",
