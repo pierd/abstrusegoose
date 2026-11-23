@@ -151,16 +151,13 @@ if __name__ == '__main__':
             with open(path) as f:
                 result = parse_page(f.read())
                 if result is None:
-                    print(path, "match failed!")
-                    break
+                    print(path, "match failed!", file=sys.stderr)
+                    sys.exit(1)
                 pages[page_id] = result
-        except IOError as e:
-            if hasattr(e, "errno") and e.errno == 2:
-                pass
-            else:
-                print(path, e)
-                break
+        except FileNotFoundError:
+            # Expected: the {1..611} range includes ids the site never had.
+            pass
         except Exception as e:
-            print(path, e)
-            break
+            print(path, e, file=sys.stderr)
+            sys.exit(1)
     print(json.dumps(pages, indent=2))
