@@ -163,7 +163,9 @@ function Search() {
   // Filter vector hits to: (a) decent similarity, (b) not already shown
   // in fuzzy results, (c) for the current query (results from a previous
   // query are dropped).
-  const VECTOR_MIN_SCORE = 0.3;
+  // Calibrated on USE-lite: a typical query scores ~0.18 (median) / ~0.33
+  // (90th percentile) against unrelated strips, and 0.45-0.6 for good hits.
+  const VECTOR_MIN_SCORE = 0.4;
   const vectorOnly = useMemo(() => {
     if (vectorHits.query !== trimmedQuery) return [];
     return vectorHits.hits

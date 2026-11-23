@@ -1,4 +1,4 @@
-"""Generate src/searchIndex.json (and optionally src/searchEmbeddings.json).
+"""Generate src/searchIndex.json.
 
 Pipeline (idempotent across runs):
 
@@ -6,21 +6,15 @@ Pipeline (idempotent across runs):
      image_alt, image_title.
   2. OCR each comic image (cached in .ocr_cache.json by image path + mtime).
   3. Write the entries to src/searchIndex.json.
-  4. If --embed is given, run the Universal Sentence Encoder (TF-Hub) over
-     each entry's combined text and write 512-dim float embeddings to
-     src/searchEmbeddings.json (a separate file so the fuzzy-search bundle
-     isn't bloated). Embeddings are cached in .embedding_cache.json by
-     sha256 of the input text.
+
+Semantic-search embeddings are generated from this index by
+build_search_embeddings.mjs (it must use the same model as the browser).
 
 OCR requires the `tesseract` binary (e.g. `brew install tesseract`).
-Embedding requires `tensorflow` and `tensorflow-hub` (slow first run while
-the model downloads; subsequent runs reuse the on-disk TF-Hub cache).
 """
 
 from __future__ import annotations
 
-import argparse
-import hashlib
 import json
 import os
 import re
@@ -31,14 +25,9 @@ from bs4 import BeautifulSoup
 from PIL import Image
 
 OCR_CACHE_PATH = ".ocr_cache.json"
-EMBEDDING_CACHE_PATH = ".embedding_cache.json"
 PUBLIC_DIR = "public"
 STRIPS_PATH = "src/strips.json"
 INDEX_PATH = "src/searchIndex.json"
-EMBEDDINGS_PATH = "src/searchEmbeddings.json"
-USE_MODEL_URL = "https://tfhub.dev/google/universal-sentence-encoder/4"
-EMBED_DIM = 512
-EMBED_MAX_CHARS = 4000  # truncate per-entry text fed to the encoder
 
 
 # --------------------------------------------------------------------------- #
@@ -143,125 +132,14 @@ def build_entries():
 
 
 # --------------------------------------------------------------------------- #
-# Embeddings (Universal Sentence Encoder via TF-Hub)
-# --------------------------------------------------------------------------- #
-
-
-def embed_text_for_entry(entry):
-    parts = [
-        entry.get("title") or "",
-        entry.get("blog") or "",
-        entry.get("ocr") or "",
-        entry.get("image_alt") or "",
-        entry.get("image_title") or "",
-    ]
-    text = " \n\n ".join(p for p in parts if p)
-    return text[:EMBED_MAX_CHARS]
-
-
-def text_hash(text):
-    return hashlib.sha256(text.encode("utf-8")).hexdigest()
-
-
-def build_embeddings(entries):
-    print("Loading TensorFlow + Universal Sentence Encoder...", file=sys.stderr)
-    import tensorflow_hub as hub  # noqa: WPS433
-
-    model = hub.load(USE_MODEL_URL)
-    print("Model loaded.", file=sys.stderr)
-
-    cache = load_json(EMBEDDING_CACHE_PATH, {})
-    total = len(entries)
-    computed = 0
-    reused = 0
-
-    # Embeddings indexed positionally to the entries list.
-    vectors: list[list[float] | None] = [None] * total
-    ids: list[str] = [e["id"] for e in entries]
-
-    batch_size = 16
-    pending_indices: list[int] = []
-    pending_texts: list[str] = []
-
-    def flush():
-        nonlocal computed
-        if not pending_indices:
-            return
-        result = model(pending_texts).numpy()
-        for idx, text, vec in zip(pending_indices, pending_texts, result):
-            vec_list = [float(x) for x in vec]
-            vectors[idx] = vec_list
-            cache[text_hash(text)] = vec_list
-            computed += 1
-        pending_indices.clear()
-        pending_texts.clear()
-
-    for i, entry in enumerate(entries):
-        text = embed_text_for_entry(entry)
-        if not text.strip():
-            vectors[i] = [0.0] * EMBED_DIM
-            continue
-        h = text_hash(text)
-        cached_vec = cache.get(h)
-        if cached_vec is not None:
-            vectors[i] = cached_vec
-            reused += 1
-            continue
-        pending_indices.append(i)
-        pending_texts.append(text)
-        if len(pending_indices) >= batch_size:
-            flush()
-            print(
-                f"  embed {i + 1}/{total} (computed={computed}, reused={reused})",
-                file=sys.stderr,
-            )
-            save_json(EMBEDDING_CACHE_PATH, cache, sort_keys=True)
-
-    flush()
-    save_json(EMBEDDING_CACHE_PATH, cache, sort_keys=True)
-    print(
-        f"Embeddings done: computed={computed}, reused={reused}, total={total}",
-        file=sys.stderr,
-    )
-
-    return {
-        "model": "universal-sentence-encoder/4",
-        "dim": EMBED_DIM,
-        "ids": ids,
-        "vectors": vectors,
-    }
-
-
-# --------------------------------------------------------------------------- #
 # CLI
 # --------------------------------------------------------------------------- #
 
 
-def parse_args(argv):
-    p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    p.add_argument(
-        "--embed",
-        action="store_true",
-        help="Also compute Universal Sentence Encoder embeddings (slow; "
-        "writes src/searchEmbeddings.json).",
-    )
-    return p.parse_args(argv)
-
-
-def main(argv=None):
-    args = parse_args(argv)
-
+def main():
     entries = build_entries()
     save_json(INDEX_PATH, entries)
     print(f"Wrote {len(entries)} entries to {INDEX_PATH}", file=sys.stderr)
-
-    if args.embed:
-        embeddings = build_embeddings(entries)
-        save_json(EMBEDDINGS_PATH, embeddings)
-        print(
-            f"Wrote {len(embeddings['ids'])} embeddings to {EMBEDDINGS_PATH}",
-            file=sys.stderr,
-        )
 
 
 if __name__ == "__main__":

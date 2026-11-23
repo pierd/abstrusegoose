@@ -16,6 +16,12 @@ type EmbeddingsFile = {
   vectors: number[][];
 };
 
+// Must match MODEL_ID / MODEL_DIR in build_search_embeddings.mjs: the comic
+// embeddings and the query embeddings have to come from the same model.
+const MODEL_ID = "universal-sentence-encoder-lite/1";
+const MODEL_URL = "/models/use-lite/model.json";
+const VOCAB_URL = "/models/use-lite/vocab.json";
+
 let embeddingMatrix: Float32Array | null = null;
 let embeddingMagnitudes: Float32Array | null = null;
 let embeddingIds: string[] = [];
@@ -31,6 +37,13 @@ async function loadEmbeddings(): Promise<void> {
   const data: EmbeddingsFile = (
     await import("./searchEmbeddings.json")
   ).default as EmbeddingsFile;
+
+  if (data.model !== MODEL_ID) {
+    throw new Error(
+      `Embeddings were built with ${data.model}, expected ${MODEL_ID}; ` +
+        "rerun `pnpm build-search-embeddings`",
+    );
+  }
 
   embeddingDim = data.dim;
   embeddingIds = data.ids;
@@ -55,7 +68,9 @@ async function loadEmbeddings(): Promise<void> {
 async function ensureModel(): Promise<use.UniversalSentenceEncoder> {
   if (model) return model;
   await tf.ready();
-  model = await use.load();
+  // Self-hosted copy of the model (see public/models/use-lite/README.md);
+  // the package default fetches it from tfhub.dev / Kaggle.
+  model = await use.load({ modelUrl: MODEL_URL, vocabUrl: VOCAB_URL });
   return model;
 }
 

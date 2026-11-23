@@ -31,7 +31,7 @@ mirror to keep the strips accessible.
 
 ### Python tooling (uv + BeautifulSoup)
 
-Two standalone Python scripts live in the project root. They are managed via
+Standalone Python scripts live in the project root. They are managed via
 `uv` (see `pyproject.toml`). They are not part of the deployed site; they are
 offline data-pipeline tools.
 
@@ -46,13 +46,16 @@ offline data-pipeline tools.
   in-comic text) for the client-side fuzzy search. OCR results are cached
   in `.ocr_cache.json` (keyed by image path + mtime) so reruns are cheap.
   Run via `pnpm build-search-index`.
-  With `--embed` (run via `pnpm build-search-index-embed`) it also
-  computes Universal Sentence Encoder embeddings for each entry and
-  writes them to `src/searchEmbeddings.json` (a separate file so the
-  fuzzy-search bundle isn't bloated). Embeddings are cached in
-  `.embedding_cache.json` (keyed by sha256 of the input text). The
-  `--embed` path requires the `embed` extra (`uv sync --extra embed`,
-  pulls in TensorFlow + tensorflow-hub, ~1 GB install).
+- **`build_search_embeddings.mjs`** (Node, not Python) -- Reads
+  `src/searchIndex.json` and computes Universal Sentence Encoder **lite**
+  embeddings for each entry, writing `src/searchEmbeddings.json` (a
+  separate file so the fuzzy-search bundle isn't bloated). It loads the
+  self-hosted model from `public/models/use-lite/` through the same JS
+  package as the browser search worker; the two **must** use the same
+  model or similarity scores are meaningless (the worker refuses to start
+  if the `model` field doesn't match). Embeddings are cached in
+  `.embedding_cache.json` (keyed by sha256 of the input text). Run via
+  `pnpm build-search-embeddings` after `pnpm build-search-index`.
 
 ### Deployment
 
@@ -71,7 +74,8 @@ offline data-pipeline tools.
 | `src/pages/` | Page components (one per route) |
 | `src/strips.json` | Generated comic data (do not edit by hand) |
 | `src/searchIndex.json` | Generated client-side fuzzy-search index (do not edit by hand) |
-| `src/searchEmbeddings.json` | Generated USE embeddings for vector search (do not edit by hand; only generated with `--embed`) |
+| `src/searchEmbeddings.json` | Generated USE-lite embeddings for vector search (do not edit by hand) |
+| `public/models/use-lite/` | Self-hosted USE-lite TF.js model used by search (browser + embedding script) |
 | `public/strips/` | Comic strip images |
 | `public/images/` | Site images (logo, etc.) |
 | `raw/` | Downloaded Wayback Machine pages (not deployed) |
@@ -87,6 +91,7 @@ pnpm lint             # run ESLint
 pnpm preview          # preview production build locally
 pnpm parse-pages      # regenerate src/strips.json from raw HTML
 pnpm build-search-index  # regenerate src/searchIndex.json from src/strips.json
+pnpm build-search-embeddings  # regenerate src/searchEmbeddings.json from src/searchIndex.json
 ```
 
 ## Data Pipeline
