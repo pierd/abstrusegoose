@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Description" content="This webcomic tastes like happiness.">
+<title>Abstruse Goose | Prime Starfighter</title>
+<link rel="stylesheet" href="styles/prime_starfighter_min.css">
+
+<link rel="shortcut icon" href="/images/favicon.ico">
+</head>
+
+<body>
+
+<header></header>
+
+<section>
+<div id="game" width="600" height="360">
+	<canvas id="background" width="600" height="360">
+	</canvas>
+	<canvas id="main" width="600" height="360">
+	</canvas>
+	<canvas id="ship" width="600" height="360">
+	</canvas>
+	<div class="loading" id="loading"><p>LOADING<br>please wait</p></div>
+	<div class="score-label">SCORE: <span id="score"></span></div>
+	<div class="level-label">LEVEL: <span id="level"></span></div>
+	<div class="hit-label">HIT RATE: <span id="hit"></span></div>
+	<div class="start-screen" id="start-screen">
+		<p>The evil Prime Empire is trying to eradicate all composite<br>
+		numbers. You must destroy ALL prime numbers and save the<br>
+		galaxy and stuff. Good luck and Godspeed, Commander!</p>
+		<p id="control-keys">arrow keys to move. space bar to unleash fire and fury.</p>
+		<p id="click-to-start">CLICK TO START</p>
+	</div>
+	<div class="level-transition">starting next level<span id="level-transition"></span></div>
+	<div class="hit-rate-bonus">HIT RATE BONUS: <span id="hit-rate-bonus"></span></div>
+	<div class="game-over" id="game-over"></div>
+	<div class="restart" id="restart" onclick="game.restart()"></div>
+	<div class="showcredits" id="showcredits" onclick="game.showCredits()"></div>
+	<div class="credits" id="credits"></div>
+	<script src="scripts/game_min.js"></script>
+
+</div>
+</section>
+
+<footer></footer>
+
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Abstruse Goose | Prime Porkour</title>
+		<link rel="shortcut icon" href="">
+		<link rel="stylesheet" href="">
+		<style>
+			#snoopy_doghouse{
+				width: 480px;
+				height: 320px;
+				display: none;
+				margin: auto;
+			}
+			#cookie_monster{
+				font-size: 1.27em;
+				font-family: Arial, sans-serif;
+				margin: 100px auto;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+	<div id="snoopy_doghouse">
+	<p id="cookie_monster">COOKIE MONSTER!</p>
+	</div>
+
+	<script>
+		function isCookieMonster(){
+			if(!navigator.cookieEnabled){
+				document.getElementById("cookie_monster").innerHTML = "For some reason, cookies need to be enabled<br />to play this game even though it doesn't use cookies.";
+				document.getElementById("snoopy_doghouse").style.display = "block";
+			}else{
+				document.getElementById("cookie_monster").innerHTML = "";
+				document.getElementById("snoopy_doghouse").style.display = "none";
+			}
+		}
+		isCookieMonster();
+	</script>
+	
+	<script src="assets/PrimePorkour/soundmanager2-setup.js"></script>
+	<script src="assets/PrimePorkour/soundmanager2-jsmin.js"></script>
+	
+	<div align="center" id="embed-html">
+		<script type="text/javascript" src="assets/PrimePorkour/html/html.nocache.js"></script>
+	</div>
+	
+	<script>
+		function handleMouseDown(evt) {
+			evt.preventDefault();
+			evt.stopPropagation();
+			evt.target.style.cursor = 'default';
+		}
+		function handleMouseUp(evt) {
+			evt.preventDefault();
+			evt.stopPropagation();
+			evt.target.style.cursor = '';
+		}
+		document.getElementById('embed-html').addEventListener('mousedown', handleMouseDown, false);
+		document.getElementById('embed-html').addEventListener('mouseup', handleMouseUp, false);
+	</script>
+		
+	</body>
+</html>

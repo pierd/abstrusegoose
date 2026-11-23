@@ -1,0 +1,143 @@
+#basilisk_psswd{
+	background-color: black;
+	margin: auto;
+	display: box;
+	width: 474px;
+	height: 294px;
+}
+#answer{
+	color: #00FF00;
+	font: 16px Arial;
+}
+#psswd{
+	background-color: black;
+	color: #00FF00;
+	border: none;
+	font: 16px Arial;
+	size: 21;
+	margin: 0;
+	padding: 0;
+	outline: none;
+	focus: auto;
+}
+#psswd:focus{
+	border: none;
+	outline: none;
+}
+#submit{
+	background-color: black;
+	border: none;
+	outline: none;
+}
+#psswd_label{
+	color: #00FF00;
+	font: 16px Arial;
+}
+			
+#panels{
+	position: relative;
+	margin: auto;
+	padding: 0;
+	display: block;
+}
+
+.panel{
+	position: absolute;
+	box-sizing: border-box;
+	margin: 0;
+	border: 3px solid black;
+	width: 240px;
+	height: 180px;
+} 
+.panel img{
+	display: none;
+}
+			
+#panel_24 {
+	left: 0px;
+	top: 310px;
+}
+#panel_25 {
+	left: 250px;
+	top: 310px;
+}
+#panel_26 {
+	left: 500px;
+	top: 310px;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
+{
+	#panel_26{
+		position: absolute;
+		left: 500px;
+		top: 310px;
+		box-sizing: border-box;
+		width: 240px;
+		height: 180px;
+		margin: 0;
+		#border: 3px solid black;
+	}
+}
+#blocker_01 {
+	position: absolute;
+	left: 500px;
+	top: 310px;
+	width: 240px;
+	height: 180px;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: none;
+}
+
+#adventure_02_instructions{
+	position: relative;
+	left: 0px;
+	top: 0px;
+	box-sizing: border-box;
+	width: 240px;
+	height: 180px;
+	#border: 3px solid red;
+	margin: auto;
+	color: #FF7F00;
+	display: block;
+}
+
+#adventure_02_instructions p{
+	position: relative;
+	text-align: center;
+	margin-top: 35px;
+	font: 16px Arial, sans-serif;
+	display: block;
+	color: #FF7F00;
+}
+#game2won{
+	position: relative;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	width: 240px;
+	height: 180px;
+	display: none;
+}
+
+#game2won p{
+	position: relative;
+	text-align: center;
+	font: 24px Arial;
+	color: #00FF11;
+	display: block;
+}
+#panel_27 {
+	left: 0px;
+	top: 500px;
+}
+#panel_28 {
+	left: 250px;
+	top: 500px;
+}
+#panel_29 {
+	left: 500px;
+	top: 500px;
+}
+.sequence5 img{
+	display: none;
+}

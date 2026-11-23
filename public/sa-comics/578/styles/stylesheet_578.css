@@ -1,0 +1,383 @@
+#panels{
+	position: relative;
+	margin: auto;
+	padding: 0;
+}
+
+.panel{
+	position: absolute;
+	box-sizing: border-box;
+	margin: 0;
+	border: 3px solid black;
+	width: 240px;
+	height: 180px;
+} 
+.panel img{
+	display: none;
+}
+.sequence1 img{
+	display: block;
+}
+#login_game{
+	display: none;
+}
+#panel_01 {
+	left: 5px;
+	top: 5px;
+}
+#panel_02 {
+	left: 255px;
+	top: 5px;
+}
+#panel_03 {
+	left: 505px;
+	top: 5px;
+}
+#panel_04 {
+	left: 5px;
+	top: 195px;
+	width: 365px;
+}
+#panel_05 {
+	left: 380px;
+	top: 195px;
+	width: 365px;
+}
+#panel_06 {
+	left: 5px;
+	top: 385px;
+}
+#panel_07 {
+	left: 255px;
+	top: 385px;
+}
+#panel_08 {
+	left: 505px;
+	top: 385px;
+}
+#panel_09 {
+	left: 5px;
+	top: 575px;
+}
+#panel_10{
+	left: 255px;
+	top: 575px;
+	width: 490px;
+}
+#panel_11 {
+	left: 5px;
+	top: 765px;
+	width: 365px;
+}
+#map1{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: -1;
+	margin: 0;
+	padding: 0;
+}
+#map1player{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 0;
+	margin: 0;
+	padding: 0;
+}
+#panel_12 {
+	left: 380px;
+	top: 765px;
+	width: 365px;
+}
+#panel_13{
+	left: 5px;
+	top: 955px;
+}
+#panel_14 {
+	left: 255px;
+	top: 955px;
+}
+#panel_15 {
+	left: 505px;
+	top: 955px;
+}
+#panel_16{
+	left: 5px;
+	top: 1145px;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
+{
+	#panel_16{
+		position: absolute;
+		left: 5px;
+		top: 1145px;
+		box-sizing: border-box;
+		width: 240px;
+		height: 180px;
+		margin: 0;
+		#border: 3px solid black;
+	}
+}
+
+#blocker_01 {
+	position: absolute;
+	left: 5px;
+	top: 1145px;
+	width: 240px;
+	height: 180px;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: block;
+}
+
+#adventure_01_instructions{
+	position: relative;
+	left: 0px;
+	top: 0px;
+	box-sizing: border-box;
+	width: 240px;
+	height: 180px;
+	#border: 3px solid red;
+	margin: auto;
+	color: #FF7F00;
+	display: block;
+}
+
+#adventure_01_instructions p{
+	position: relative;
+	text-align: center;
+	margin-top: 35px;
+	font: 16px Arial, sans-serif;
+	display: block;
+	color: #FF7F00;
+}
+
+#adventure_01_countdown{
+	position: absolute;
+	top: 1155px;
+	left: 200px;
+	display: block;
+	color: red;
+	font: 32px Arial;
+}
+
+#game1over{
+	position: relative;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	width: 240px;
+	height: 180px;
+	display: none;
+}
+
+#gameover_msg_01{
+	position: relative;
+	text-align: center;
+	font: 32px Arial;
+	color: red;
+	display: block;
+}
+
+#gameover_msg_01_01{
+	position: relative;
+	text-align: center;
+	font: 24px Arial;
+	color: red;
+	display: block;
+}
+#game1won{
+	position: relative;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	width: 240px;
+	height: 180px;
+	display: none;
+}
+#game1won p{
+	position: relative;
+	text-align: center;
+	font: 24px Arial;
+	color: #00FF11;
+	display: block;
+}
+.sequence2 img{
+	display: none;
+}
+#panel_17 {
+	left: 255px;
+	top: 1145px;
+}
+#panel_18 {
+	left: 505px;
+	top: 1145px;
+}
+#panel_19{
+	left: 190px;
+	top: 1335px;
+	width: 365px;
+}
+#panel_20 {
+	left: 75px;
+	top: 1525px;
+	width: 612px;
+	height: 620px;
+}
+.sequence3 img{
+	display: none;
+}
+#panel_21 {
+	left: 5px;
+	top: 2155px;
+	width: 365px;
+}
+#panel_22 {
+	left: 380px;
+	top: 2155px;
+	width: 365px;
+}
+#panel_23 {
+	left: 135px;
+	top: 2345px;
+	width: 480px;
+	height: 300px;
+	display: block;
+}
+#panel_24 {
+	left: 5px;
+	top: 2655px;
+}
+#panel_25 {
+	left: 255px;
+	top: 2655px;
+}
+#panel_26 {
+	left: 505px;
+	top: 2655px;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
+{
+	#panel_26{
+		position: absolute;
+		left: 505px;
+		top: 2655px;
+		box-sizing: border-box;
+		width: 240px;
+		height: 180px;
+		margin: 0;
+	}
+}
+#blocker_02 {
+	position: absolute;
+	left: 505px;
+	top: 2655px;
+	width: 240px;
+	height: 180px;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: none;
+}
+
+#adventure_02_instructions{
+	position: relative;
+	left: 0px;
+	top: 0px;
+	box-sizing: border-box;
+	width: 240px;
+	height: 180px;
+	margin: auto;
+	color: #FF7F00;
+	display: block;
+}
+
+#adventure_02_instructions p{
+	position: relative;
+	text-align: center;
+	margin-top: 35px;
+	font: 16px Arial, sans-serif;
+	display: block;
+	color: #FF7F00;
+}
+
+#adventure_02_countdown{
+	position: absolute;
+	top: 1155px;
+	left: 200px;
+	display: block;
+	color: red;
+	font: 32px Arial;
+}
+
+#game2over{
+	position: relative;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	width: 240px;
+	height: 180px;
+	display: none;
+}
+
+#gameover_msg_02{
+	position: relative;
+	text-align: center;
+	font: 32px Arial;
+	color: red;
+	display: block;
+}
+
+#gameover_msg_02_01{
+	position: relative;
+	text-align: center;
+	font: 24px Arial;
+	color: red;
+	display: block;
+}
+#game2won{
+	position: relative;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	width: 240px;
+	height: 180px;
+	display: none;
+}
+
+#game2won p{
+	position: relative;
+	text-align: center;
+	font: 24px Arial;
+	color: #00FF11;
+	display: block;
+}
+#panel_27 {
+	left: 5px;
+	top: 2845px;
+}
+#panel_28 {
+	left: 255px;
+	top: 2845px;
+}
+#panel_29 {
+	left: 505px;
+	top: 2845px;
+}
+		
+#instructions {
+	width: 240px;
+	height: 180px;
+  font-size: 30px;
+  font-family: 'Courier New';
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+	-webkit-box-orient: horizontal;
+	-moz-box-orient: horizontal;
+	-webkit-box-pack: center;
+	-moz-box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	color: #ffffff;
+	text-align: center;
+	cursor: pointer;
+}

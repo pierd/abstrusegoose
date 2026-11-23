@@ -8,6 +8,10 @@ export type Strip = {
   image_alt: string | null;
   image_width: string | null;
   image_height: string | null;
+  // Set for strips that embed a page (game / interactive comic) instead of an image.
+  iframe_url: string | null;
+  iframe_width: string | null;
+  iframe_height: string | null;
   previous_id: number | null;
   next_id: number | null;
   blog_text: string;

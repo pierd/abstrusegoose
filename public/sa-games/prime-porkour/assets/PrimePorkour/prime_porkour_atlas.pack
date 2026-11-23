@@ -1,0 +1,33 @@
+
+prime_porkour_atlas.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+big_pig
+  rotate: false
+  xy: 1, 69
+  size: 768, 264
+  orig: 768, 264
+  offset: 0, 0
+  index: -1
+small_pig
+  rotate: false
+  xy: 1, 35
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+french_horn
+  rotate: false
+  xy: 771, 301
+  size: 64, 32
+  orig: 64, 32
+  offset: 0, 0
+  index: -1
+ball
+  rotate: false
+  xy: 1, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1

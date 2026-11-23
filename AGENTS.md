@@ -105,7 +105,9 @@ To update comic data:
 `src/strips.json` is the single source of truth for the frontend. Each entry is
 keyed by strip ID (numeric for regular comics, path-like for secret archives)
 and contains: `title`, `image_title`, `image_url`, `image_anchor`, `image_alt`,
-`image_width`, `image_height`, `previous_id`, `next_id`, `blog_text`.
+`image_width`, `image_height`, `iframe_url`, `iframe_width`, `iframe_height`
+(set for the few strips that embed a game / interactive comic page instead of
+an image), `previous_id`, `next_id`, `blog_text`.
 
 ## Conventions
 

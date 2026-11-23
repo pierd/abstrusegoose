@@ -1,0 +1,199 @@
+p{
+	#padding: 0;
+	#margin-top: 0;
+	#margin-bottom: 0;
+}
+#game{
+	position: absolute;
+	#left: 0;
+	#top: 0;
+	padding: 0;
+	#border: 3px solid red;
+}
+#map{
+	position: absolute;
+	left: 245px;
+	top: 49px;
+	width: 240px;
+	height: 240px;
+	#border: 15px solid green;
+	#margin: 5px auto 10px;
+}
+#map_canvas{
+	position: relative;
+	left: 0;
+	top: 0;
+	z-index: -1;
+}
+#map_player_canvas{
+	position: relative;
+	left: 0;
+	top: -246px;
+	z-index: 0;
+	#border: 5px solid yellow;
+}
+#game_arena{
+	position: absolute;
+	left: 0;
+	top: 49px;
+	#width: 480px;
+	#height: 360px;
+	width: 240px;
+	height: 240px;
+	#border: 3px solid red;
+}
+#blocker{
+	position: absolute;
+	left: 0;
+	top: 49px;
+	#width: 474px;
+	#height: 354px;
+	width: 234px;
+	height: 234px;
+	#display: inline;
+	#border: 5px solid blue;
+}
+#instructions{
+	position: relative;
+	left: 0px;
+	top: 5px;
+	box-sizing: border-box;
+	#width: 480px;
+	#height: 360px;
+	width: 240px;
+	height: 240px;
+	#border: 3px solid red;
+	margin: auto;
+	color: #FF7F00;
+	display: block;
+}
+#instructions p{
+	position: relative;
+	text-align: center;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-left: 5px;
+	font: 14px Arial, sans-serif;
+	display: block;
+	color: #FF7F00;
+}
+#gameover{
+	position: relative;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	#width: 480px;
+	#height: 360px;
+	width: 240px;
+	height: 240px;
+	display: none;
+}
+#gameover p{
+	position: relative;
+	text-align: center;
+	font: 24px Arial;
+	color: #FF1111;
+	display: block;
+}
+#gamewon{
+	position: relative;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	#width: 480px;
+	#height: 360px;
+	width: 240px;
+	height: 240px;
+	display: none;
+}
+#gamewon p{
+	position: relative;
+	text-align: center;
+	font: 24px Arial;
+	color: #00FF11;
+	display: block;
+}
+#captured{
+	position: relative;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	#width: 480px;
+	#height: 360px;
+	width: 240px;
+	height: 240px;
+	display: none;
+}
+#captured p{
+	position: relative;
+	text-align: center;
+	#margin-top: 25px;
+	font: 24px Arial;
+	color: #FF1111;
+	display: block;
+}
+#restart_countdown{
+	position: relative;
+	text-align: center;
+	font: 24px Arial;
+	color: #FF1111;
+	display: block;
+}
+#stats{
+	position: absolute;
+	top: 5px;
+	left: 0;
+	box-sizing: border-box;
+	width: 480px;
+	height: 27px;
+	font: 18px Arial;
+	#border: 3px solid red;
+	text-align: center;
+	margin: 5px auto 5px;
+}
+#package_contents{
+	position: absolute;
+	top: 300px;
+	left: 0;
+	width: 481px;
+	height: 300px;
+	font: 24px Arial, sans-serif;
+	border: 1px solid black;
+}
+#package_contents ol{
+	margin: 15px 0 auto 15px;
+}
+#package_contents li{
+	margin-bottom: 10px;
+	font: 18px Arial, sans-serif;
+}
+#package_contents_title{
+	text-align: center;
+	margin: 5px auto 0;
+}
+#package_contents_note{
+	#padding-top: 25px;
+	#padding-left: 10px;
+	text-align: justify;
+	margin: 25px 20px 0;
+	font: 12px Arial, sans-serif;
+}
+#packages_acquired{
+	display: inline;
+}
+#num_captured{
+	display: inline;
+}
+#num_captured_label{
+	position: relative;
+	margin-left: 15px;
+	display: inline;
+}
+#packages_label{
+	display: inline;
+	#left: 5px;
+}
+#mysterybox{
+	position: relative;
+	top: 750px;
+}

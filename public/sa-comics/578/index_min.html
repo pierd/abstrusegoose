@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="shortcut icon" href="">
+		<link rel="stylesheet" href="styles/stylesheet_578.css">
+		<link rel="stylesheet" href="styles/game2_3_styles.css">
+
+		<script src="scripts/libs/jquery-3.2.1.min.js"></script>
+		<script src="scripts/libs/three.js"></script>
+		<script src="scripts/libs/math.min.js"></script>
+		<script src="scripts/utils/abstruse_utils.js"></script>
+
+	</head>
+	<body>
+		<div id="panels">
+			<div id="panel_01" class="panel sequence1"><img src="images/p1.png"></div>
+			<div id="panel_02" class="panel sequence1"><img src="images/p2.png"></div>
+			<div id="panel_03" class="panel sequence1"><img src="images/p3.png"></div>
+			<div id="panel_04" class="panel sequence1"><img src="images/p4.png"></div>
+			<div id="panel_05" class="panel sequence1"><img src="images/p5.png"></div>
+			<div id="panel_06" class="panel sequence1"><img src="images/p6.png"></div>
+			<div id="panel_07" class="panel sequence1"><img src="images/p7.png"></div>
+			<div id="panel_08" class="panel sequence1"><img src="images/p8.png"></div>
+			<div id="panel_09" class="panel sequence1"><img src="images/p9.png"></div>
+			<div id="panel_10" class="panel sequence1"><img src="images/p10.png"></div>
+			<div id="panel_11" class="panel sequence1"><img src="images/p11.png"></div>
+			<div id="panel_12" class="panel sequence1"><img src="images/p12.png"></div>
+			<div id="panel_13" class="panel sequence1">
+				<canvas id="map1" width="234" height="174"></canvas>
+				<canvas id="map1player" width="234" height="174"></canvas>
+			</div>
+			<div id="panel_14" class="panel sequence1"><img src="images/p14.png"></div>
+			<div id="panel_15" class="panel sequence1"><img src="images/p15.png"></div>
+			<div id="panel_16" class="panel sequence1"></div>
+			<div id="blocker_01">
+				<div id="adventure_01_instructions">
+					<p><strong>finish mini-adventure<br>to unlock next panels<br></strong><br>(c)lick me<br>W,A,S,D or arrow keys = move <br>Mouse = look around"</p>
+				</div>
+				<div id="game1over">
+					<p id="gameover_msg_01">WASTED</p><p id="gameover_msg_01_01">press ESC to restart</p>
+				</div>
+				<div id="game1won">
+					<p id="gamewon_msg_01"><strong>you did it</strong><br><br>press ESC to unlock next panels</p>
+				</div>
+			</div>
+			<div id="panel_17" class="panel sequence2"><img src="images/p17.png"></div>
+			<div id="panel_18" class="panel sequence2"><img src="images/p18.png"></div>
+			<div id="panel_19" class="panel sequence2"><img src="images/p19.png"></div>
+			<div id="panel_20" class="panel sequence2">
+				<div id="game2">
+					<div id="graph">
+						<canvas id="grid_canvas" width="600px" height="360px"></canvas>
+						<canvas id="game_canvas" width="600px" height="360px"></canvas>
+						<canvas id="message_canvas" width="600px" height="360px"></canvas>
+						<canvas id="asteroids_canvas" width="600px" height="360px"></canvas>
+						<div id="grid_numbers">
+							<div id="pi_over_2">&pi;/2</div>
+							<div id="pi">&pi;</div>
+							<div id="three_pi_over_2">3&pi;/2</div>
+							<div id="two">2</div>
+							<div id="one">1</div>
+							<div id="zero">0</div>
+							<div id="m_one">-1</div>
+							<div id="m_two">-2</div>
+						</div>
+					</div>
+					<div id="game_controls">
+						<input type="button" id="fire" value="FIRE"></input>
+						<input type="button" id="reset" value="RESET"></input>
+						<input type="button" id="clear_screen" value="CLEAR SCREEN"></input>
+						<input type="button" id="do_not_press" value="DO NOT PRESS"></input>
+						<div id="expr_area">
+							<label for="expr_text">y = </label>
+							<input type="text" name="expr_text" id="expr_text" value="" readonly>
+
+						</div>
+						<div id="input_buttons">
+							<input type="button" id="t" value="t"></input>
+							<input type="button" id="sin" value="sin"></input>
+							<input type="button" id="log" value="log"></input>
+							<input type="button" id="^" value="^"></input>
+							<input type="button" id="+" value="+"></input>
+							<input type="button" id="-" value="-"></input>
+							<input type="button" id="mult" value="X"></input>
+							<input type="button" id="/" value="/"></input>
+							<input type="button" id="(" value="("></input>
+							<input type="button" id=")" value=")"></input>
+							
+							<input type="button" id="point" value="."></input>
+							<input type="button" id="0" value="0"></input>
+							<input type="button" id="1" value="1"></input>
+							<input type="button" id="2" value="2"></input>
+							<input type="button" id="3" value="3"></input>
+							<input type="button" id="4" value="4"></input>
+							<input type="button" id="5" value="5"></input>
+							<input type="button" id="6" value="6"></input>
+							<input type="button" id="7" value="7"></input>
+							<input type="button" id="8" value="8"></input>
+							<input type="button" id="9" value="9"></input>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="panel_21" class="panel sequence3"><img src="images/p21.png"></div>
+			<div id="panel_22" class="panel sequence3"><img src="images/p22.png"></div>
+			<div id="panel_23" class="panel sequence3">
+				<div id="login_game">
+					
+				</div>
+			</div>
+
+			<div id="panel_24" class="panel sequence4"><img src="images/p24.png"></div>
+			<div id="panel_25" class="panel sequence4"><img src="images/p25.png"></div>
+			<div id="panel_26" class="panel sequence4"></div>
+			<div id="blocker_02">
+				<div id="adventure_02_instructions">
+					<p><strong>click to start adventure</strong><br><br>W,A,S,D or arrow keys = move <br>Mouse = look around"</p>
+				</div>
+				<div id="game2over">
+					<p id="gameover_msg_02">WASTED</p><p id="gameover_msg_01_01">press ESC to restart</p>
+				</div>
+				<div id="game2won">
+					<p id="gamewon_msg_02"><strong>YA DONE IT</strong><br><br>press ESC to unlock next panels</p>
+				</div>
+			</div>
+			<div id="panel_27" class="panel sequence5"><img src="images/p27.png"></div>
+			<div id="panel_28" class="panel sequence5"><img src="images/p28.png"></div>
+			<div id="panel_29" class="panel sequence5"><img src="images/p29.png"></div>
+		</div>
+		<div id="adventure_01_countdown"></div>
+		<script src="scripts/main.js"></script>
+
+	</body>
+</html>

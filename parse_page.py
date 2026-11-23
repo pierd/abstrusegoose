@@ -119,6 +119,21 @@ def parse_page(content):
         if parent and parent.name == 'a':
             image_anchor = fix_url(parent.get('href'))
 
+    # Some later strips (games, interactive comics) embed an <iframe> in place
+    # of the comic image. Its src is relative to the strip page (i.e. the
+    # site root), so make it root-absolute.
+    iframe_url = None
+    iframe_width = None
+    iframe_height = None
+    iframe = section.find('iframe')
+    if iframe is not None and not iframe.find_parent('div', id='blog_text'):
+        src = fix_url(iframe.get('src'))
+        if src and not src.startswith(('/', 'https://')):
+            src = '/' + src
+        iframe_url = src
+        iframe_width = iframe.get('width')
+        iframe_height = iframe.get('height')
+
     # Extract blog_text inner HTML using regex on raw content to preserve
     # original HTML formatting (BeautifulSoup normalizes br tags, attribute
     # order, etc. which changes the output)
@@ -137,6 +152,9 @@ def parse_page(content):
         image_alt=unescape(image_alt),
         image_width=image_width,
         image_height=image_height,
+        iframe_url=iframe_url,
+        iframe_width=iframe_width,
+        iframe_height=iframe_height,
         previous_id=previous_id,
         next_id=next_id,
         blog_text=blog_text,

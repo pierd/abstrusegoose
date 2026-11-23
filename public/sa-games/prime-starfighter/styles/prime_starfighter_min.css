@@ -1,0 +1,180 @@
+section{
+	font-family: Arial, sans-serif;
+}
+
+#game{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 600px;
+	height: 360px;
+}
+canvas{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background: transparent;
+}
+.loading {
+	position: relative;
+	color: #FF7F00;
+	margin: 89px auto 0;
+	font-size: 30px;
+	text-align: center;
+	cursor: default;
+	z-index: 0;
+	display: block;
+}
+
+#background{
+	z-index: 0;
+	display: none;
+}
+#main{
+	z-index:0;
+	display: none;
+}
+#ship{
+	z-index: 0;
+	display: none;
+}
+.score-label{
+	text-align: left;
+	position: absolute;
+	top: 5px;
+	left: 440px;
+	color: #FF7F00;
+	font-size: 16px;
+	cursor: default;
+	display: none;
+}
+.level-label{
+	text-align: left;
+	position: absolute;
+	top: 25px;
+	left: 440px;
+	color: #FF7F00;
+	font-size: 16px;
+	cursor: default;
+	display: none;
+}
+.hit-label{
+	text-align: left;
+	position: absolute;
+	top: 45px;
+	left: 440px;
+	color: #FF7F00;
+	font-size: 16px;
+	cursor: default;
+	display: none;
+}
+#start-screen{
+	position: relative;
+	margin: 40px auto 0;
+	color: #FF7F00;
+	font-size: 20px;
+	text-align: center;
+	cursor: default;
+	display: none;
+}
+#start-screen p{
+	padding-top: 24px;
+}
+
+#control-keys{
+	color: #FF7F00;
+	font-size: 20px;
+	cursor: default;
+	display: none;
+}
+#click-to-start{
+	color: #FF7F00;
+	font-size: 20px;
+	cursor: default;
+	display: none;
+}
+#click-to-start:hover{
+	color: #FFD700;
+}
+
+.game-over{
+	position: relative;
+	text-align: center;
+	margin: 100px auto 0;
+	color: #FF7F00;
+	font-size: 30px;
+	cursor: default;
+	display: none;
+	z-index: 0;
+}
+
+#level-transition{
+	position: relative;
+	text-align: center;
+	z-index: 0;
+}
+.level-transition{
+	position: relative;
+	text-align: center;
+	margin: 100px auto 0;
+	color: #FF7F00;
+	font-size: 20px;
+	cursor: default;
+	display: none;
+	z-index: 0;
+}
+
+#hit-rate-bonus{
+	z-index: 0;
+}
+.hit-rate-bonus{
+	position: absolute;
+	top: 127px;
+	left: 160px;
+	color: #FF7F00;
+	font-size: 25px;
+	cursor: default;
+	display: none;
+	z-index: 0;
+}
+
+.restart{
+	position: absolute;
+	font-size: 20px;
+	cursor:pointer;
+	top: 169px;
+	left: 250px;
+	color: #FF7F00;
+	display: none;
+}
+.restart:hover{
+	color: #FFD700;
+}
+.showcredits{
+	position: absolute;
+	text-align: center;
+	font-size: 20px;
+	cursor:pointer;
+	top: 225px;
+	left: 265px;
+	color: #FF7F00;
+	display: none;
+}
+.showcredits:hover{
+	color: #FFD700;
+}
+.credits{
+	position: relative;
+	margin: 75px auto 0;
+	text-align: center;
+	font-size: 16px;
+	color: #FF7F00;
+	z-index: 0;
+	display: block;
+}
+.credits p{
+	padding-bottom: 16px;
+}
+.credits a{
+	color: #FF7F00;
+}

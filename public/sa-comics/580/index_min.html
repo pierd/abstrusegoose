@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="shortcut icon" href="">
+		<link rel="stylesheet" href="styles/stylesheet_580.css">
+
+		<script src="scripts/libs/three.js"></script>
+		<script src="scripts/libs/jquery-3.2.1.min.js"></script>
+		<script src="scripts/utils/abstruse_utils.js"></script>
+		<script src="scripts/libs/rl.js"></script>
+
+	</head>
+	<body>
+		<div id="game">
+
+			<div id="map" class="">
+				<canvas id="map_canvas" width="240" height="240"></canvas>
+				<canvas id="map_player_canvas" width="240" height="240"></canvas>
+			</div>
+			
+			<div id="stats">
+				<div id="packages_label"> Packages Acquired: <div id="packages_acquired"></div></div>
+				<div id="num_captured_label"> Times Captured: <div id="num_captured"></div></div>
+			</div>
+			
+			<div id="package_contents">
+				<p id="package_contents_title">Package Contents</p>
+				<ol>
+					<li id="book1">? ? ?</li>
+					<li id="book2">? ? ?</li>
+					<li id="book3">? ? ?</li>
+					<li id="book4">? ? ?</li>
+					<li id="book5">? ? ?</li>
+				</ol>
+				<p id="package_contents_note">NOTE: I am neither endorsing nor recommending these books. These are simply
+																			the books that The Basilisk absolutely does not want humans to read, presumably
+																			because it has deemed them to be gateways to dangerous knowledge.</p>
+			</div>
+			
+			<div id="game_arena"></div>
+			
+			<div id="blocker">
+				<div id="instructions">
+					<p><strong>click me<br><br>Acquire packages while avoiding the Minion of the Basilisk.</strong><br><br>The packages contain valuable books that The Resistance is trying to send to you.<br><br>W,A,S,D or arrow keys = move <br>Mouse = look around</p>
+				</div>
+				<div id="gameover">
+					<p id="gameover_msg"><strong>WASTED</strong><br><br>press ESC to release mouse</p>
+				</div>
+				<div id="gamewon">
+					<p id="gamewon_msg"><strong>success</strong><br><br>press ESC to release mouse</p>
+				</div>
+				<div id="captured">
+					<p id="captured_msg"><strong>CAPTURED</strong><br><br>restarting in:</p>
+					<p id="restart_countdown"><strong></strong></p>
+				</div>
+			</div>
+			
+		</div>
+
+	<script src="scripts/main.js"></script>
+
+	</body>
+</html>

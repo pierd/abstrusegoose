@@ -1,0 +1,145 @@
+#game2{
+	position: absolute;
+	display: none;
+}
+#graph{
+position: relative;
+	width: 600px;
+	height: 360px;
+	border: 3px solid black;
+}
+#game_canvas{
+	position: relative;
+	z-index: -1;
+	top: -364px;
+}
+#grid_canvas{
+	position:relative;
+	z-index: -2;
+}
+#message_canvas{
+	position:relative;
+	z-index: -1;
+	top: -728px;
+}
+#asteroids_canvas{
+	position:relative;
+	z-index: 0;
+	top: -1092px;
+	display: block;
+}
+#grid_numbers{
+	position: absolute;
+	color: #03FF03;
+	margin: 0;
+	padding:0;
+}
+
+#pi_over_2{
+	position: relative;
+	font: 24px Arial;
+	top: -1453px;
+	left: 130px;
+}
+#pi{
+	position: relative;
+	font: 24px Arial;
+	top: -1481px;
+	left: 291px;
+}
+#three_pi_over_2{
+	position: relative;
+	font: 24px Arial;
+	top: -1509px;
+	left: 423px;
+}
+#two{
+	position: relative;
+	font: 24px Arial;
+	top: -1495px;
+	left: 5px;
+}
+#one{
+	position: relative;
+	font: 24px Arial;
+	top: -1465px;
+	left: 5px;
+}
+#zero{
+	position: relative;
+	font: 24px Arial;
+	top: -1432px;
+	left: 5px;
+}
+#m_one{
+	position: relative;
+	font: 24px Arial;
+	top: -1403px;
+	left: 5px;
+}
+#m_two{
+	position: relative;
+	font: 24px Arial;
+	top: -1373px;
+	left: 5px;
+}
+#game_controls{
+	position: relative;
+	width: 600px;
+	height: 220px;
+	margin-top: 25px;
+}
+input[type="button"]{
+	box-shadow: 2px 2px 0 navy;
+	background-color: silver;
+}
+#fire{
+	width: 100px;
+	height: 40px;
+	margin-left: 35px;
+}
+#reset{
+	width: 100px;
+	height: 40px;
+	margin-left: 5px;
+}
+#clear_screen{
+	width: 150px;
+	height: 40px;
+	margin-left: 5px;
+}
+#do_not_press{
+	width: 150px;
+	height: 40px;
+	margin-left: 5px;
+	color: red;
+}
+#expr_area{
+	margin: 20px 0 0 0px;
+	width: 600px;
+	height: 75px;
+	font-size: 24px;
+}
+#expr_area label{
+	margin-left: 25px;
+}
+#expr_area input{
+	width: 490px;
+	height: 50px;
+	font-size: 24px;
+}
+#input_buttons{
+	width: 500px;
+	height: 80px;
+	margin: auto;
+}
+#input_buttons input{
+	width: 40px;
+	height: 40px;
+}
+#x{
+	width: 40px;
+	height: 40px;
+	display: block;
+	margin-bottom: 5px;
+}

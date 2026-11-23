@@ -57,6 +57,15 @@ function ComicStrip() {
       height={strip.image_height ?? undefined}
       title={strip.image_title ?? undefined}
     />
+  ) : strip.iframe_url ? (
+    <iframe
+      src={strip.iframe_url}
+      width={strip.iframe_width ?? undefined}
+      height={strip.iframe_height ?? undefined}
+      title={stripTitle}
+      scrolling="no"
+      style={{ border: 0 }}
+    />
   ) : null;
 
   return (
