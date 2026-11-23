@@ -30,3 +30,6 @@ __pycache__
 # Caches for build_search_index.py
 .ocr_cache.json
 .embedding_cache.json
+
+# TypeScript incremental build info
+*.tsbuildinfo

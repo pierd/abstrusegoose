@@ -1,9 +1,8 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { currentId, firstId, Strip, strips, numericStripIds } from "../strips";
+import { Link, useParams } from "react-router-dom";
+import { currentId, firstId, getStrip, type Strip } from "../strips";
 
 
 function Navigation({ strip }: { strip: Strip }) {
-  const navigate = useNavigate();
   return (
     <p>
       {strip.previous_id !== null ? (
@@ -18,19 +17,7 @@ function Navigation({ strip }: { strip: Strip }) {
         <>&laquo; Previous</>
       )}
       &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <a
-        style={{ cursor: "pointer" }}
-        onClick={async () => {
-          // navigate to random strip
-          const id =
-            numericStripIds[
-              Math.floor(Math.random() * numericStripIds.length)
-            ];
-          await navigate(`/${id}`);
-        }}
-      >
-        Random
-      </a>
+      <Link to="/random">Random</Link>
       &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       {strip.next_id !== null ? (
         <Link to={`/${strip.next_id}`}>Next &raquo;</Link>
@@ -48,7 +35,7 @@ function ComicStrip() {
   const splat = params["*"];
   const id = splat && splat.length > 0 ? splat : currentId;
 
-  const strip = strips[id];
+  const strip = getStrip(id);
 
   if (!strip) {
     return (

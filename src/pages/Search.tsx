@@ -90,9 +90,11 @@ function Search() {
   const workerRef = useRef<Worker | null>(null);
   const [workerStatus, setWorkerStatus] = useState<WorkerStatus>("loading");
   const [workerError, setWorkerError] = useState<string | null>(null);
+  // Last finished vector search: its hits, or the error it failed with.
   const [vectorHits, setVectorHits] = useState<{
     query: string;
     hits: VectorSearchHit[];
+    error?: string;
   }>({ query: "", hits: [] });
   const requestIdRef = useRef(0);
   const requestQueriesRef = useRef<Map<number, string>>(new Map());
@@ -110,11 +112,21 @@ function Search() {
         case "ready":
           setWorkerStatus("ready");
           break;
-        case "error":
-          setWorkerError(msg.error);
-          if (msg.requestId === -1) setWorkerStatus("error");
+        case "error": {
+          if (msg.requestId === -1) {
+            setWorkerError(msg.error);
+            setWorkerStatus("error");
+            break;
+          }
+          // A single search failed: mark its query as finished so the UI
+          // doesn't stay on "(searching...)" forever.
+          const q = requestQueriesRef.current.get(msg.requestId);
           requestQueriesRef.current.delete(msg.requestId);
+          if (q !== undefined && msg.requestId === requestIdRef.current) {
+            setVectorHits({ query: q, hits: [], error: msg.error });
+          }
           break;
+        }
         case "results": {
           const q = requestQueriesRef.current.get(msg.requestId);
           requestQueriesRef.current.delete(msg.requestId);
@@ -229,8 +241,16 @@ function Search() {
                 {" "}(unavailable: {workerError})
               </span>
             )}
+            {workerStatus === "ready" && !vectorPending && vectorHits.error && (
+              <span className="search-status">
+                {" "}(failed: {vectorHits.error})
+              </span>
+            )}
           </h2>
-          {workerStatus === "ready" && !vectorPending && vectorOnly.length === 0 ? (
+          {workerStatus === "ready" &&
+          !vectorPending &&
+          !vectorHits.error &&
+          vectorOnly.length === 0 ? (
             <p>No additional semantic matches.</p>
           ) : (
             <ResultList

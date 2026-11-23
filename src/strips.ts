@@ -22,3 +22,9 @@ export const numericStripIds = Object.keys(strips)
   .sort((a, b) => Number(a) - Number(b));
 export const firstId = numericStripIds[0];
 export const currentId = numericStripIds[numericStripIds.length - 1];
+
+// Own-property lookup, so ids like "constructor" or "toString" don't resolve
+// to Object.prototype members.
+export function getStrip(id: string): Strip | undefined {
+  return Object.prototype.hasOwnProperty.call(strips, id) ? strips[id] : undefined;
+}

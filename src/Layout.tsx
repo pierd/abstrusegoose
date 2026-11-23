@@ -59,7 +59,7 @@ function Layout() {
             <img
               alt="Creative Commons License"
               style={{ borderWidth: 0 }}
-              src="https://creativecommons.org/images/public/somerights20.png"
+              src="/images/somerights20.png"
             />
           </a>
           &nbsp;
